@@ -16888,16 +16888,16 @@ window.DASHBOARD_DATA = {
         ]
       },
       "internal": {
-        "sevenSent": 53,
+        "sevenSent": 54,
         "groupCount": 11,
-        "sevenShare": 50,
+        "sevenShare": 42,
         "topSender": {
           "name": "张霞霞",
           "count": 28
         },
         "per_user": {
           "张霞霞": 28,
-          "赵豫思": 10,
+          "赵豫思": 11,
           "马红霞": 11,
           "刘思凡": 4
         },
@@ -16931,7 +16931,7 @@ window.DASHBOARD_DATA = {
           },
           {
             "name": "赵豫思",
-            "sent": 10,
+            "sent": 11,
             "groups": [
               "取退货群",
               "异常处理自己人",
@@ -16955,24 +16955,24 @@ window.DASHBOARD_DATA = {
     },
     "ops": {
       "processing": {
-        "异常上下架量": 38,
-        "对外对接(电话)": 2,
+        "异常上下架量": 40,
+        "对外对接(电话)": 5,
         "对外对接(微信/企微)": 7,
-        "异常处理量": 26,
+        "异常处理量": 32,
         "外呼量": 9,
-        "视频调取量": 4
+        "视频调取量": 33
       },
       "workOrder": {
-        "total": 1,
-        "西安": 1,
+        "total": 3,
+        "西安": 3,
         "太原": 0,
         "兰州": 0
       },
       "douyinAudit": 0,
-      "pickupReturn": 0
+      "pickupReturn": 21
     },
     "warning": {
-      "date": "2026-09-14",
+      "date": "2026-09-15",
       "total": 0,
       "byType": {},
       "records": [],
