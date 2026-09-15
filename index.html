@@ -2348,5 +2348,29 @@
   }catch(e){}
 })();
 </script>
+<script>
+/* === 嵌入深链支持（供 employee-upph-dashboard 用 iframe 嵌入指定模块） ===
+ * 用法：在 URL 加 #embed=1&page=模块名（或 ?embed=1&page=模块名），
+ * 进入嵌入模式：隐藏侧栏/顶栏，自动切换到对应模块页。
+ * 模块名：eff-daily(每日效率) / sub-eff(分步效率) / exp-data(西安体验数据)
+ */
+(function(){
+  try{
+    var q = new URLSearchParams(location.search);
+    var h = new URLSearchParams((location.hash||'').replace(/^#/, ''));
+    var embed = q.get('embed') === '1' || h.get('embed') === '1';
+    if(!embed) return;
+    var pg = q.get('page') || h.get('page');
+    document.body.classList.add('embed-mode');
+    var st = document.createElement('style');
+    st.textContent = '.sidebar{display:none!important}.topbar{display:none!important}.main{margin:0!important;padding:0!important}.scroll{padding:10px 12px!important}.page{padding:0!important}body.embed-mode>div[style*="z-index:99999"]{display:none!important}';
+    document.head.appendChild(st);
+    if(pg){
+      function go(){ var a=document.querySelector('a[data-page="'+pg+'"]'); if(a) a.click(); }
+      go(); setTimeout(go, 400); setTimeout(go, 1000);
+    }
+  }catch(e){}
+})();
+</script>
 </body>
 </html>
