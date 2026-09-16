@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-<meta name="build" content="20260915T0958">
+<meta name="build" content="20260916T1003">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -826,12 +826,12 @@
   <div id="calendar" class="calendar" style="display:none;"></div>
   <div class="line-tip" id="lineTip"></div>
 
-  <script src="xian_data.js?v=20260915T0958"></script>
-  <script src="ops_data.js?v=20260915T0958"></script>
-  <script src="ocs_data.js?v=20260915T0958"></script>
-  <script src="exp_data.js?v=20260915T0958"></script>
-  <script src="metric_track.js?v=20260915T0958"></script>
-  <script src="chart.umd.min.js?v=20260915T0958"></script>
+  <script src="xian_data.js?v=20260916T1003"></script>
+  <script src="ops_data.js?v=20260916T1003"></script>
+  <script src="ocs_data.js?v=20260916T1003"></script>
+  <script src="exp_data.js?v=20260916T1003"></script>
+  <script src="metric_track.js?v=20260916T1003"></script>
+  <script src="chart.umd.min.js?v=20260916T1003"></script>
 <script>
 (function(){
   var $ = function(id){ return document.getElementById(id); };
@@ -2345,30 +2345,6 @@
     badge.style.cssText='position:fixed;bottom:8px;right:8px;background:rgba(0,0,0,.6);color:#fff;padding:4px 10px;border-radius:4px;font-size:12px;z-index:99999;font-family:monospace;pointer-events:none';
     badge.textContent='构建 '+build;
     (document.body||document.documentElement).appendChild(badge);
-  }catch(e){}
-})();
-</script>
-<script>
-/* === 嵌入深链支持（供 employee-upph-dashboard 用 iframe 嵌入指定模块） ===
- * 用法：在 URL 加 #embed=1&page=模块名（或 ?embed=1&page=模块名），
- * 进入嵌入模式：隐藏侧栏/顶栏，自动切换到对应模块页。
- * 模块名：eff-daily(每日效率) / sub-eff(分步效率) / exp-data(西安体验数据)
- */
-(function(){
-  try{
-    var q = new URLSearchParams(location.search);
-    var h = new URLSearchParams((location.hash||'').replace(/^#/, ''));
-    var embed = q.get('embed') === '1' || h.get('embed') === '1';
-    if(!embed) return;
-    var pg = q.get('page') || h.get('page');
-    document.body.classList.add('embed-mode');
-    var st = document.createElement('style');
-    st.textContent = '.sidebar{display:none!important}.topbar{display:none!important}.main{margin:0!important;padding:0!important}.scroll{padding:10px 12px!important}.page{padding:0!important}body.embed-mode>div[style*="z-index:99999"]{display:none!important}';
-    document.head.appendChild(st);
-    if(pg){
-      function go(){ var a=document.querySelector('a[data-page="'+pg+'"]'); if(a) a.click(); }
-      go(); setTimeout(go, 400); setTimeout(go, 1000);
-    }
   }catch(e){}
 })();
 </script>
