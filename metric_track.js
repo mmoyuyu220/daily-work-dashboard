@@ -1,5 +1,5 @@
 window.METRIC_TRACK = {
-  "updated": "2026-09-22",
+  "updated": "2026-09-23",
   "week": {
     "cols": [
       "W1",
@@ -3607,8 +3607,8 @@ window.METRIC_TRACK = {
             "s": "ok"
           },
           {
-            "v": "",
-            "s": "blank"
+            "v": "0.0000%",
+            "s": "ok"
           }
         ],
         "bad": 1,
@@ -3912,8 +3912,8 @@ window.METRIC_TRACK = {
             "s": "ok"
           },
           {
-            "v": "",
-            "s": "blank"
+            "v": "0.007%",
+            "s": "ok"
           }
         ],
         "bad": 3,
@@ -5927,7 +5927,7 @@ window.METRIC_TRACK = {
         "owner": "刘思凡",
         "vals": [
           {
-            "v": "0.003%",
+            "v": "0.004%",
             "s": "ok"
           },
           {
