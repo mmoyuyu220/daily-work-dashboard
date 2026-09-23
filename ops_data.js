@@ -2,7 +2,7 @@
  * window.DASHBOARD_DATA 为全局字典，键为 YYYY-MM-DD。
  * 每日 18:30 自动化调用 process_one 追加/替换当日条目（整体解析后重写，避免字符串替换损坏）。
  */
-window.DASHBOARD_DATA = {
+window.DASHBOARD_DATA ={
   "2026-07-16": {
     "date": "2026-07-16",
     "messages": {
@@ -18693,6 +18693,560 @@ window.DASHBOARD_DATA = {
         "issue": "机器叠放",
         "issueField": "问题描述",
         "hasImage": true
+      },
+      "improvementPlan": [
+        "5S 现场：物料/工具/机器定置定位，通道无杂物，工位每日班前班后整理，问题图片即整改证据。",
+        "基本素养：按规定着装挂牌、按标准作业流程操作，不简化、不跳步，关键动作有自检确认。",
+        "安全素养：用电/设备/搬运安全合规，发现隐患立即上报并隔离，杜绝带病作业。",
+        "质量素养：拆修/质检/发货环节自检互检，问题不过夜，当班次闭环并复检留痕。"
+      ]
+    }
+  },
+  "2026-09-22": {
+    "date": "2026-09-22",
+    "messages": {
+      "external": {
+        "atCount": 4,
+        "replyRate": 50,
+        "replied": 2,
+        "unreplied": 2,
+        "groupCount": 13,
+        "colleagueCount": 7,
+        "perColleague": [
+          {
+            "name": "刘思凡",
+            "atCount": 0,
+            "repliedCount": 0,
+            "repliedByOthers": 0,
+            "unfollowed": 0,
+            "avgReplyTime": null,
+            "maxReplyTime": null,
+            "groups": []
+          },
+          {
+            "name": "王妙星",
+            "atCount": 0,
+            "repliedCount": 0,
+            "repliedByOthers": 0,
+            "unfollowed": 0,
+            "avgReplyTime": null,
+            "maxReplyTime": null,
+            "groups": []
+          },
+          {
+            "name": "杨凡凡",
+            "atCount": 1,
+            "repliedCount": 0,
+            "repliedByOthers": 0,
+            "unfollowed": 1,
+            "avgReplyTime": null,
+            "maxReplyTime": null,
+            "groups": [
+              "加盟调拨异常沟通群西安"
+            ]
+          },
+          {
+            "name": "马红霞",
+            "atCount": 3,
+            "repliedCount": 2,
+            "repliedByOthers": 0,
+            "unfollowed": 1,
+            "avgReplyTime": 9.5,
+            "maxReplyTime": 14.0,
+            "groups": [
+              "供应链能力中心&顾问&异常协作群",
+              "加盟调拨异常沟通群西安"
+            ]
+          },
+          {
+            "name": "赵豫思",
+            "atCount": 0,
+            "repliedCount": 0,
+            "repliedByOthers": 0,
+            "unfollowed": 0,
+            "avgReplyTime": null,
+            "maxReplyTime": null,
+            "groups": []
+          },
+          {
+            "name": "洪朵",
+            "atCount": 0,
+            "repliedCount": 0,
+            "repliedByOthers": 0,
+            "unfollowed": 0,
+            "avgReplyTime": null,
+            "maxReplyTime": null,
+            "groups": []
+          },
+          {
+            "name": "张霞霞",
+            "atCount": 0,
+            "repliedCount": 0,
+            "repliedByOthers": 0,
+            "unfollowed": 0,
+            "avgReplyTime": null,
+            "maxReplyTime": null,
+            "groups": []
+          }
+        ],
+        "replyDetails": [
+          {
+            "group": "供应链能力中心&顾问&异常协作群",
+            "atPerson": "马红霞",
+            "atTime": "2026-09-22 14:39",
+            "actualReplier": "马红霞",
+            "responseMin": 5.0,
+            "status": "已回复"
+          },
+          {
+            "group": "加盟调拨异常沟通群西安",
+            "atPerson": "马红霞",
+            "atTime": "2026-09-22 09:01",
+            "actualReplier": "",
+            "responseMin": 0,
+            "status": "未跟进"
+          },
+          {
+            "group": "加盟调拨异常沟通群西安",
+            "atPerson": "马红霞",
+            "atTime": "2026-09-22 13:45",
+            "actualReplier": "马红霞",
+            "responseMin": 14.0,
+            "status": "已回复"
+          },
+          {
+            "group": "加盟调拨异常沟通群西安",
+            "atPerson": "杨凡凡",
+            "atTime": "2026-09-22 17:47",
+            "actualReplier": "",
+            "responseMin": 0,
+            "status": "未跟进"
+          }
+        ]
+      },
+      "internal": {
+        "sevenSent": 44,
+        "groupCount": 11,
+        "sevenShare": 44,
+        "topSender": {
+          "name": "马红霞",
+          "count": 20
+        },
+        "per_user": {
+          "杨凡凡": 14,
+          "马红霞": 20,
+          "王妙星": 9,
+          "刘思凡": 1
+        },
+        "perColleague": [
+          {
+            "name": "刘思凡",
+            "sent": 1,
+            "groups": [
+              "美美桑内"
+            ]
+          },
+          {
+            "name": "王妙星",
+            "sent": 9,
+            "groups": [
+              "取退货群",
+              "抖音业务"
+            ]
+          },
+          {
+            "name": "杨凡凡",
+            "sent": 14,
+            "groups": [
+              "取退货群",
+              "西太兰体验运营沟通交流群",
+              "西安异常"
+            ]
+          },
+          {
+            "name": "马红霞",
+            "sent": 20,
+            "groups": [
+              "取退货群",
+              "异常处理自己人"
+            ]
+          },
+          {
+            "name": "赵豫思",
+            "sent": 0,
+            "groups": []
+          },
+          {
+            "name": "洪朵",
+            "sent": 0,
+            "groups": []
+          },
+          {
+            "name": "张霞霞",
+            "sent": 0,
+            "groups": []
+          }
+        ]
+      }
+    },
+    "ops": {
+      "processing": {
+        "异常上下架量": 42,
+        "对外对接(电话)": 14,
+        "对外对接(微信/企微)": 8,
+        "异常处理量": 31,
+        "外呼量": 7,
+        "视频调取量": 15
+      },
+      "workOrder": {
+        "total": 2,
+        "西安": 2,
+        "太原": 0,
+        "兰州": 0
+      },
+      "douyinAudit": 0,
+      "pickupReturn": 22
+    },
+    "warning": {
+      "date": "2026-09-23",
+      "total": 0,
+      "byType": {},
+      "records": [],
+      "source": "历史预警未处理反馈记录"
+    },
+    "qualityCheck": {
+      "newCount": 6,
+      "totalChecks": 21,
+      "improvement": "当日检出素养问题 6 条（含问题描述），须当班次整改闭环。",
+      "records": [
+        {
+          "date": "2026-09-22",
+          "team": "拆修",
+          "point": "工艺sw素养",
+          "owner": "泽伟",
+          "issue": "监控画面不完整，有一部分拆机动作超出监控范围",
+          "issueField": "问题描述",
+          "hasImage": true
+        },
+        {
+          "date": "2026-09-22",
+          "team": "前辅助",
+          "point": "工艺sw素养",
+          "owner": "雅杰",
+          "issue": "机器存在叠放",
+          "issueField": "问题描述",
+          "hasImage": true
+        },
+        {
+          "date": "2026-09-22",
+          "team": "前辅助",
+          "point": "5S",
+          "owner": "雅杰",
+          "issue": "电线拖地",
+          "issueField": "问题描述",
+          "hasImage": true
+        },
+        {
+          "date": "2026-09-22",
+          "team": "后辅助",
+          "point": "5S",
+          "owner": "伯萱",
+          "issue": "1.移动小货架未放入划线区域；2.垃圾桶未放入划线区域",
+          "issueField": "问题描述",
+          "hasImage": true
+        },
+        {
+          "date": "2026-09-22",
+          "team": "拆修",
+          "point": "5S",
+          "owner": "泽伟",
+          "issue": "人员离岗时，工位凌乱",
+          "issueField": "问题描述",
+          "hasImage": true
+        },
+        {
+          "date": "2026-09-22",
+          "team": "收仓",
+          "point": "5S",
+          "owner": "柏杰",
+          "issue": "地面黑色周转箱叠放超过4层，周转盒直接放于地面上",
+          "issueField": "问题描述",
+          "hasImage": true
+        }
+      ],
+      "lastRecord": {
+        "date": "2026-09-22",
+        "team": "收仓",
+        "point": "5S",
+        "owner": "柏杰",
+        "issue": "地面黑色周转箱叠放超过4层，周转盒直接放于地面上",
+        "issueField": "问题描述",
+        "hasImage": true
+      },
+      "improvementPlan": [
+        "5S 现场：物料/工具/机器定置定位，通道无杂物，工位每日班前班后整理，问题图片即整改证据。",
+        "基本素养：按规定着装挂牌、按标准作业流程操作，不简化、不跳步，关键动作有自检确认。",
+        "安全素养：用电/设备/搬运安全合规，发现隐患立即上报并隔离，杜绝带病作业。",
+        "质量素养：拆修/质检/发货环节自检互检，问题不过夜，当班次闭环并复检留痕。"
+      ]
+    }
+  },
+  "2026-09-21": {
+    "date": "2026-09-21",
+    "messages": {
+      "external": {
+        "atCount": 6,
+        "replyRate": 67,
+        "replied": 4,
+        "unreplied": 2,
+        "groupCount": 13,
+        "colleagueCount": 7,
+        "perColleague": [
+          {
+            "name": "刘思凡",
+            "atCount": 0,
+            "repliedCount": 0,
+            "repliedByOthers": 0,
+            "unfollowed": 0,
+            "avgReplyTime": null,
+            "maxReplyTime": null,
+            "groups": []
+          },
+          {
+            "name": "王妙星",
+            "atCount": 0,
+            "repliedCount": 0,
+            "repliedByOthers": 0,
+            "unfollowed": 0,
+            "avgReplyTime": null,
+            "maxReplyTime": null,
+            "groups": []
+          },
+          {
+            "name": "杨凡凡",
+            "atCount": 6,
+            "repliedCount": 4,
+            "repliedByOthers": 0,
+            "unfollowed": 2,
+            "avgReplyTime": 4.0,
+            "maxReplyTime": 13.0,
+            "groups": [
+              "加盟调拨异常沟通群西安",
+              "西安门店运营中心对接群"
+            ]
+          },
+          {
+            "name": "马红霞",
+            "atCount": 0,
+            "repliedCount": 0,
+            "repliedByOthers": 0,
+            "unfollowed": 0,
+            "avgReplyTime": null,
+            "maxReplyTime": null,
+            "groups": []
+          },
+          {
+            "name": "赵豫思",
+            "atCount": 0,
+            "repliedCount": 0,
+            "repliedByOthers": 0,
+            "unfollowed": 0,
+            "avgReplyTime": null,
+            "maxReplyTime": null,
+            "groups": []
+          },
+          {
+            "name": "洪朵",
+            "atCount": 0,
+            "repliedCount": 0,
+            "repliedByOthers": 0,
+            "unfollowed": 0,
+            "avgReplyTime": null,
+            "maxReplyTime": null,
+            "groups": []
+          },
+          {
+            "name": "张霞霞",
+            "atCount": 0,
+            "repliedCount": 0,
+            "repliedByOthers": 0,
+            "unfollowed": 0,
+            "avgReplyTime": null,
+            "maxReplyTime": null,
+            "groups": []
+          }
+        ],
+        "replyDetails": [
+          {
+            "group": "加盟调拨异常沟通群西安",
+            "atPerson": "杨凡凡",
+            "atTime": "2026-09-21 17:10",
+            "actualReplier": "杨凡凡",
+            "responseMin": 1.0,
+            "status": "已回复"
+          },
+          {
+            "group": "加盟调拨异常沟通群西安",
+            "atPerson": "杨凡凡",
+            "atTime": "2026-09-21 17:12",
+            "actualReplier": "杨凡凡",
+            "responseMin": 1.0,
+            "status": "已回复"
+          },
+          {
+            "group": "加盟调拨异常沟通群西安",
+            "atPerson": "杨凡凡",
+            "atTime": "2026-09-21 17:15",
+            "actualReplier": "",
+            "responseMin": 0,
+            "status": "未跟进"
+          },
+          {
+            "group": "西安门店运营中心对接群",
+            "atPerson": "杨凡凡",
+            "atTime": "2026-09-21 10:48",
+            "actualReplier": "杨凡凡",
+            "responseMin": 1.0,
+            "status": "已回复"
+          },
+          {
+            "group": "西安门店运营中心对接群",
+            "atPerson": "杨凡凡",
+            "atTime": "2026-09-21 11:12",
+            "actualReplier": "杨凡凡",
+            "responseMin": 13.0,
+            "status": "已回复"
+          },
+          {
+            "group": "西安门店运营中心对接群",
+            "atPerson": "杨凡凡",
+            "atTime": "2026-09-21 11:25",
+            "actualReplier": "",
+            "responseMin": 0,
+            "status": "未跟进"
+          }
+        ]
+      },
+      "internal": {
+        "sevenSent": 100,
+        "groupCount": 11,
+        "sevenShare": 52,
+        "topSender": {
+          "name": "张霞霞",
+          "count": 43
+        },
+        "per_user": {
+          "杨凡凡": 15,
+          "张霞霞": 43,
+          "王妙星": 33,
+          "赵豫思": 8,
+          "刘思凡": 1
+        },
+        "perColleague": [
+          {
+            "name": "刘思凡",
+            "sent": 1,
+            "groups": [
+              "抖音业务"
+            ]
+          },
+          {
+            "name": "王妙星",
+            "sent": 33,
+            "groups": [
+              "取退货群"
+            ]
+          },
+          {
+            "name": "杨凡凡",
+            "sent": 15,
+            "groups": [
+              "西安仓储",
+              "西太兰体验运营沟通交流群",
+              "异常处理自己人",
+              "美美桑内",
+              "西安异常"
+            ]
+          },
+          {
+            "name": "马红霞",
+            "sent": 0,
+            "groups": []
+          },
+          {
+            "name": "赵豫思",
+            "sent": 8,
+            "groups": [
+              "取退货群",
+              "西太兰体验运营沟通交流群",
+              "西安sup主力部队",
+              "西安异常"
+            ]
+          },
+          {
+            "name": "洪朵",
+            "sent": 0,
+            "groups": []
+          },
+          {
+            "name": "张霞霞",
+            "sent": 43,
+            "groups": [
+              "取退货群",
+              "西安sup主力部队"
+            ]
+          }
+        ]
+      }
+    },
+    "ops": {
+      "processing": {
+        "异常上下架量": 51,
+        "对外对接(电话)": 2,
+        "对外对接(微信/企微)": 5,
+        "异常处理量": 32,
+        "外呼量": 9,
+        "视频调取量": 19
+      },
+      "workOrder": {
+        "total": 5,
+        "西安": 5,
+        "太原": 0,
+        "兰州": 0
+      },
+      "douyinAudit": 0,
+      "pickupReturn": 44
+    },
+    "warning": {
+      "date": "2026-09-23",
+      "total": 0,
+      "byType": {},
+      "records": [],
+      "source": "历史预警未处理反馈记录"
+    },
+    "qualityCheck": {
+      "newCount": 1,
+      "totalChecks": 15,
+      "improvement": "当日检出素养问题 1 条（含问题描述），须当班次整改闭环。",
+      "records": [
+        {
+          "date": "2026-09-21",
+          "team": "拆修",
+          "point": "工艺sw素养",
+          "owner": "泽伟",
+          "issue": "未复核触摸，且导致机器间接性生线及触摸失灵现象",
+          "issueField": "问题描述",
+          "hasImage": false
+        }
+      ],
+      "lastRecord": {
+        "date": "2026-09-21",
+        "team": "拆修",
+        "point": "工艺sw素养",
+        "owner": "泽伟",
+        "issue": "未复核触摸，且导致机器间接性生线及触摸失灵现象",
+        "issueField": "问题描述",
+        "hasImage": false
       },
       "improvementPlan": [
         "5S 现场：物料/工具/机器定置定位，通道无杂物，工位每日班前班后整理，问题图片即整改证据。",
