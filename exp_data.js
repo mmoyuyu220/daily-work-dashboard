@@ -3,7 +3,7 @@
 // weeks: 周1..周N（N=至少一张周度表有真实数据的最大周，全空未来周已截断）；比率以数值存储（0.054 = 0.054%，96.19 = 96.19%）；空值=null。
 // 预警标记：metric.warn{dir:'gt'|'lt',thr,label} 或 metric.flagNonZero。
 window.EXP_DATA = {
- "updated": "2026-10-07",
+ "updated": "2026-10-12",
  "weeks": [
   1,
   2,
@@ -94,8 +94,8 @@ window.EXP_DATA = {
       15804.0,
       13836.0,
       14131.0,
-      12141.0,
-      null
+      11022,
+      11739
      ],
      "warn": null,
      "flagNonZero": false,
@@ -144,8 +144,8 @@ window.EXP_DATA = {
       9.0,
       9.0,
       12.0,
-      14.0,
-      null
+      8,
+      3
      ],
      "warn": null,
      "flagNonZero": false,
@@ -194,8 +194,8 @@ window.EXP_DATA = {
       0.057,
       0.065,
       0.085,
-      0.115,
-      null
+      0.073,
+      0.026
      ],
      "warn": null,
      "flagNonZero": false,
@@ -244,8 +244,8 @@ window.EXP_DATA = {
       null,
       null,
       null,
-      null,
-      null
+      0,
+      0
      ],
      "warn": null,
      "flagNonZero": false,
@@ -294,8 +294,8 @@ window.EXP_DATA = {
       0.0,
       0.0,
       1.0,
-      2.0,
-      null
+      2,
+      6
      ],
      "warn": null,
      "flagNonZero": false,
@@ -344,8 +344,8 @@ window.EXP_DATA = {
       0.006,
       0.0,
       0.007,
-      0.025,
-      null
+      0.018,
+      0.051
      ],
      "warn": {
       "dir": "gt",
@@ -405,8 +405,8 @@ window.EXP_DATA = {
       12890.0,
       11193.0,
       11104.0,
-      10498.0,
-      null
+      10498,
+      11380
      ],
      "warn": null,
      "flagNonZero": false,
@@ -455,8 +455,8 @@ window.EXP_DATA = {
       0.0,
       0.0,
       0.0,
-      0.0,
-      null
+      0,
+      0
      ],
      "warn": null,
      "flagNonZero": true,
@@ -555,8 +555,8 @@ window.EXP_DATA = {
       3656.0,
       3455.0,
       3710.0,
-      4471.0,
-      null
+      0,
+      0
      ],
      "warn": null,
      "flagNonZero": false,
@@ -605,8 +605,8 @@ window.EXP_DATA = {
       0.0,
       0.0,
       0.0,
-      0.0,
-      null
+      0,
+      0
      ],
      "warn": null,
      "flagNonZero": true,
@@ -1089,7 +1089,9 @@ window.EXP_DATA = {
     "5月",
     "6月",
     "7月",
-    "8月"
+    "8月",
+    "9月",
+    "10月"
    ],
    "metrics": [
     {
@@ -1105,7 +1107,9 @@ window.EXP_DATA = {
       268,
       424,
       245,
-      268
+      268,
+      13,
+      5
      ],
      "warn": null,
      "flagNonZero": false,
@@ -1124,7 +1128,9 @@ window.EXP_DATA = {
       5,
       2,
       1,
-      1
+      1,
+      0,
+      0
      ],
      "warn": null,
      "flagNonZero": true,
@@ -1143,7 +1149,9 @@ window.EXP_DATA = {
       1.87,
       0.47,
       0.41,
-      0.37
+      0.37,
+      0.0,
+      0.0
      ],
      "warn": null,
      "flagNonZero": false,
