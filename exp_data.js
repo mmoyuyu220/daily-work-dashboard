@@ -3,7 +3,7 @@
 // weeks: 周1..周N（N=至少一张周度表有真实数据的最大周，全空未来周已截断）；比率以数值存储（0.054 = 0.054%，96.19 = 96.19%）；空值=null。
 // 预警标记：metric.warn{dir:'gt'|'lt',thr,label} 或 metric.flagNonZero。
 window.EXP_DATA = {
- "updated": "2026-10-12",
+ "updated": "2026-10-14",
  "weeks": [
   1,
   2,
@@ -43,7 +43,8 @@ window.EXP_DATA = {
   36,
   37,
   38,
-  39
+  39,
+  40
  ],
  "groups": {
   "baoSun": {
@@ -94,8 +95,13 @@ window.EXP_DATA = {
       15804.0,
       13836.0,
       14131.0,
-      11022,
-      11739
+      12141.0,
+      12703.0,
+      13409.0,
+      null,
+      null,
+      null,
+      null
      ],
      "warn": null,
      "flagNonZero": false,
@@ -144,8 +150,13 @@ window.EXP_DATA = {
       9.0,
       9.0,
       12.0,
-      8,
-      3
+      14.0,
+      9.0,
+      11.0,
+      null,
+      null,
+      null,
+      null
      ],
      "warn": null,
      "flagNonZero": false,
@@ -194,8 +205,13 @@ window.EXP_DATA = {
       0.057,
       0.065,
       0.085,
-      0.073,
-      0.026
+      0.115,
+      0.071,
+      0.082,
+      null,
+      null,
+      null,
+      null
      ],
      "warn": null,
      "flagNonZero": false,
@@ -244,8 +260,13 @@ window.EXP_DATA = {
       null,
       null,
       null,
-      0,
-      0
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
      ],
      "warn": null,
      "flagNonZero": false,
@@ -294,8 +315,13 @@ window.EXP_DATA = {
       0.0,
       0.0,
       1.0,
-      2,
-      6
+      2.0,
+      1.0,
+      1.0,
+      null,
+      null,
+      null,
+      null
      ],
      "warn": null,
      "flagNonZero": false,
@@ -344,8 +370,13 @@ window.EXP_DATA = {
       0.006,
       0.0,
       0.007,
-      0.018,
-      0.051
+      0.025,
+      0.016,
+      0.007,
+      null,
+      null,
+      null,
+      null
      ],
      "warn": {
       "dir": "gt",
@@ -405,8 +436,13 @@ window.EXP_DATA = {
       12890.0,
       11193.0,
       11104.0,
-      10498,
-      11380
+      10498.0,
+      11380.0,
+      12031.0,
+      null,
+      null,
+      null,
+      null
      ],
      "warn": null,
      "flagNonZero": false,
@@ -455,8 +491,13 @@ window.EXP_DATA = {
       0.0,
       0.0,
       0.0,
-      0,
-      0
+      0.0,
+      0.0,
+      1.0,
+      null,
+      null,
+      null,
+      null
      ],
      "warn": null,
      "flagNonZero": true,
@@ -503,6 +544,11 @@ window.EXP_DATA = {
       null,
       null,
       null,
+      null,
+      null,
+      null,
+      null,
+      0.0083,
       null,
       null,
       null,
@@ -555,8 +601,13 @@ window.EXP_DATA = {
       3656.0,
       3455.0,
       3710.0,
-      0,
-      0
+      4471.0,
+      4784.0,
+      4199.0,
+      null,
+      null,
+      null,
+      null
      ],
      "warn": null,
      "flagNonZero": false,
@@ -605,8 +656,13 @@ window.EXP_DATA = {
       0.0,
       0.0,
       0.0,
-      0,
-      0
+      0.0,
+      0.0,
+      0.0,
+      null,
+      null,
+      null,
+      null
      ],
      "warn": null,
      "flagNonZero": true,
@@ -647,6 +703,11 @@ window.EXP_DATA = {
       null,
       null,
       0.0319,
+      null,
+      null,
+      null,
+      null,
+      null,
       null,
       null,
       null,
@@ -735,6 +796,15 @@ window.EXP_DATA = {
      "投诉原因": "客户不认可机器后壳维修",
      "核实情况": "机器X光检测后壳磁铁缺少，经与自动化确认X光误判，订单25年的此问题已优化",
      "失误人员": "X光"
+    },
+    {
+     "周期": "40周",
+     "渠道": "B2B",
+     "订单编码": "20260920105130737889",
+     "品类": "手机",
+     "投诉原因": "序列号查到的出厂内存是64G，购买的是256G，",
+     "核实情况": "失误原因：\n1.质检流程顺序错误：输入 IMEI 后先拍照取证，再进行质检，SKU 内存项漏检，系统默认判定为 256G\n2.质检完成及提交环节均未核对 SKU 信息，未发现内存选择错误",
+     "失误人员": "焦鹏"
     }
    ]
   },
@@ -787,7 +857,12 @@ window.EXP_DATA = {
       0.64,
       0.6,
       0.7,
-      0.14
+      0.72,
+      1.64,
+      null,
+      null,
+      null,
+      null
      ],
      "warn": {
       "dir": "gt",
@@ -841,7 +916,12 @@ window.EXP_DATA = {
       0.41,
       1.6,
       0.7,
-      0.84
+      1.1,
+      0.87,
+      null,
+      null,
+      null,
+      null
      ],
      "warn": {
       "dir": "gt",
@@ -895,6 +975,11 @@ window.EXP_DATA = {
       0.57,
       1.16,
       1.43,
+      null,
+      0.9,
+      null,
+      null,
+      null,
       null
      ],
      "warn": {
@@ -956,7 +1041,12 @@ window.EXP_DATA = {
       100.0,
       100.0,
       100.0,
-      100.0
+      100.0,
+      100.0,
+      null,
+      null,
+      null,
+      null
      ],
      "warn": {
       "dir": "lt",
@@ -1008,6 +1098,11 @@ window.EXP_DATA = {
       null,
       null,
       100.0,
+      null,
+      null,
+      null,
+      null,
+      null,
       null,
       null,
       null
@@ -1064,6 +1159,11 @@ window.EXP_DATA = {
       null,
       null,
       null,
+      null,
+      null,
+      null,
+      null,
+      null,
       null
      ],
      "warn": {
@@ -1089,9 +1189,7 @@ window.EXP_DATA = {
     "5月",
     "6月",
     "7月",
-    "8月",
-    "9月",
-    "10月"
+    "8月"
    ],
    "metrics": [
     {
@@ -1107,9 +1205,7 @@ window.EXP_DATA = {
       268,
       424,
       245,
-      268,
-      13,
-      5
+      268
      ],
      "warn": null,
      "flagNonZero": false,
@@ -1128,9 +1224,7 @@ window.EXP_DATA = {
       5,
       2,
       1,
-      1,
-      0,
-      0
+      1
      ],
      "warn": null,
      "flagNonZero": true,
@@ -1149,9 +1243,7 @@ window.EXP_DATA = {
       1.87,
       0.47,
       0.41,
-      0.37,
-      0.0,
-      0.0
+      0.37
      ],
      "warn": null,
      "flagNonZero": false,
@@ -1374,6 +1466,15 @@ window.EXP_DATA = {
      "问题类型": "未按规范质检",
      "问题说明": "拆机未关机",
      "改善方案": "机器触摸失灵无法关机@刘耀文"
+    },
+    {
+     "月": "10月",
+     "周": "W41",
+     "物品编码": "20260928131403506814",
+     "挂载属性值": "",
+     "问题类型": "机器保护",
+     "问题说明": "抽拉保护膜，导致机器碰撞",
+     "改善方案": ""
     }
    ]
   }
