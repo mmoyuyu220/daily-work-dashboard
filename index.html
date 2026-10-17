@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-<meta name="build" content="20261017T1148">
+<meta name="build" content="20261017T1222">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -834,12 +834,12 @@
   <div id="calendar" class="calendar" style="display:none;"></div>
   <div class="line-tip" id="lineTip"></div>
 
-  <script src="xian_data.js?v=20261017T1148"></script>
-  <script src="ops_data.js?v=20261017T1148"></script>
-  <script src="ocs_data.js?v=20261017T1148"></script>
-  <script src="exp_data.js?v=20261017T1148"></script>
-  <script src="metric_track.js?v=20261017T1148"></script>
-  <script src="chart.umd.min.js?v=20261017T1148"></script>
+  <script src="xian_data.js?v=20261017T1222"></script>
+  <script src="ops_data.js?v=20261017T1222"></script>
+  <script src="ocs_data.js?v=20261017T1222"></script>
+  <script src="exp_data.js?v=20261017T1222"></script>
+  <script src="metric_track.js?v=20261017T1222"></script>
+  <script src="chart.umd.min.js?v=20261017T1222"></script>
 <script>
 (function(){
   var $ = function(id){ return document.getElementById(id); };
@@ -1022,30 +1022,74 @@
             total:total, wx:wo['西安']||0, wt:wo['太原']||0, wl:wo['兰州']||0, pr:pr, dy:dy,
             qc:(d.qualityCheck&&d.qualityCheck.newCount)||0, warn:(d.warning&&d.warning.total)||0};
   }
-  function odsRangeTableHtml(list){
-    var cols=[['日期','date'],['外部@次数','at'],['外部回复率%','reply'],['内部7人发送','sent'],
-              ['处理总量','total'],['工单·西安','wx'],['工单·太原','wt'],['工单·兰州','wl'],
-              ['取退货量','pr'],['抖音稽核','dy'],['素养检出','qc'],['未处理预警','warn']];
-    var head='<thead><tr>'+cols.map(function(c){return '<th'+(c[1]==='date'?' class="c-date"':'')+'>'+c[0]+'</th>';}).join('')+'</tr></thead>';
-    var sums={}; cols.forEach(function(c){ if(c[1]!=='date') sums[c[1]]=0; });
-    var replySum=0, n=list.length;
-    var bodyRows=list.map(function(date){
-      var m=odsRowMetrics(date); if(!m) return '';
-      cols.forEach(function(c){ if(c[1]!=='date') sums[c[1]]+=(+m[c[1]]||0); });
-      replySum+=(+m.reply||0);
-      return '<tr><td class="c-date">'+date+'</td>'
-        +'<td>'+m.at+'</td><td>'+m.reply+'%</td><td>'+m.sent+'</td>'
-        +'<td class="strong">'+m.total+'</td><td>'+m.wx+'</td><td>'+m.wt+'</td><td>'+m.wl+'</td>'
-        +'<td>'+m.pr+'</td><td>'+m.dy+'</td><td>'+m.qc+'</td><td>'+m.warn+'</td></tr>';
-    }).join('');
-    var avgReply=n?Math.round(replySum/n):0;
-    var totalRow='<tr class="total-row"><td class="c-date">合计 · '+n+'天</td>'
-      +'<td>'+sums.at+'</td><td>'+avgReply+'%</td><td>'+sums.sent+'</td>'
-      +'<td class="strong">'+sums.total+'</td><td>'+sums.wx+'</td><td>'+sums.wt+'</td><td>'+sums.wl+'</td>'
-      +'<td>'+sums.pr+'</td><td>'+sums.dy+'</td><td>'+sums.qc+'</td><td>'+sums.warn+'</td></tr>';
-    return '<div class="range-summary"><div class="rs-title">区间运营汇总（'+n+' 天 · '+list[0]+' ~ '+list[n-1]+'）</div>'
-      +'<div class="rs-note">所选区间内每日运营核心指标，一表呈现；合计行为区间累加（回复率为区间均值）。将「开始/结束」设为同一天可查看该日单日详情。</div></div>'
-      +'<div class="table-wrap"><table class="ops-table range-table">'+head+'<tbody>'+bodyRows+totalRow+'</tbody></table></div>';
+  // 区间聚合：把所选日期累加为一条「合成记录」，便于直接喂给原有单日生成器（保持卡片样式不变）
+  function odsAggregate(list){
+    var agg={ date:list[0], messages:{external:{},internal:{}},
+      ops:{processing:{},workOrder:{西安:0,太原:0,兰州:0,total:0},douyinAudit:0,pickupReturn:0},
+      qualityCheck:{newCount:0,totalChecks:0,records:[],improvementPlan:[],improvement:'',lastRecord:null},
+      warning:{total:0,records:[],byType:{},source:''} };
+    var ext=agg.messages.external; ext.atCount=0;ext.replied=0;ext.unreplied=0;ext.replyRate=0;ext.groupCount=0;ext.colleagueCount=0;ext.perColleague={};ext.replyDetails=[];
+    var int_=agg.messages.internal; int_.sevenSent=0;int_.groupCount=0;int_.perColleague={};int_.topSender={name:'',count:0};
+    list.forEach(function(date){
+      var d=D[date]; if(!d) return;
+      var e=(d.messages||{}).external; if(e){
+        ext.atCount+=(e.atCount||0); ext.replied+=(e.replied||0); ext.unreplied+=(e.unreplied||0);
+        ext.groupCount=Math.max(ext.groupCount,(e.groupCount||0)); ext.colleagueCount=Math.max(ext.colleagueCount,(e.colleagueCount||0));
+        (e.perColleague||[]).forEach(function(c){
+          var a=ext.perColleague[c.name]||(ext.perColleague[c.name]={name:c.name,atCount:0,repliedCount:0,repliedByOthers:0,unfollowed:0,_sa:0,_n:0,_sm:0});
+          a.atCount+=(c.atCount||0); a.repliedCount+=(c.repliedCount||0); a.repliedByOthers+=(c.repliedByOthers||0); a.unfollowed+=(c.unfollowed||0);
+          if(c.avgReplyTime!==null&&c.avgReplyTime!==undefined&&c.avgReplyTime!=='—'){ a._sa+=(+c.avgReplyTime||0); a._n++; }
+          if(c.maxReplyTime!==null&&c.maxReplyTime!==undefined&&c.maxReplyTime!=='—'){ a._sm=Math.max(a._sm,(+c.maxReplyTime||0)); }
+        });
+        (e.replyDetails||[]).forEach(function(r){ if(ext.replyDetails.length<300) ext.replyDetails.push(r); });
+      }
+      var i=(d.messages||{}).internal; if(i){
+        int_.sevenSent+=(i.sevenSent||0); int_.groupCount=Math.max(int_.groupCount,(i.groupCount||0));
+        (i.perColleague||[]).forEach(function(c){
+          var a=int_.perColleague[c.name]||(int_.perColleague[c.name]={name:c.name,sent:0,groups:[]});
+          a.sent+=(c.sent||0); (c.groups||[]).forEach(function(g){ if(a.groups.indexOf(g)<0) a.groups.push(g); });
+        });
+      }
+      var o=d.ops||{}, proc=o.processing||{}, wo=o.workOrder||{};
+      Object.keys(proc).forEach(function(k){ if(k==='pickupReturn'){ agg.ops.pickupReturn+=(+proc[k]||0); } else { agg.ops.processing[k]=(agg.ops.processing[k]||0)+(+proc[k]||0); } });
+      agg.ops.workOrder['西安']+=(wo['西安']||0); agg.ops.workOrder['太原']+=(wo['太原']||0); agg.ops.workOrder['兰州']+=(wo['兰州']||0); agg.ops.workOrder.total+=(wo.total||0);
+      agg.ops.douyinAudit+=(o.douyinAudit||0);
+      var qc=d.qualityCheck||{}; agg.qualityCheck.newCount+=(qc.newCount||0); agg.qualityCheck.totalChecks+=(qc.totalChecks||0);
+      (qc.records||[]).forEach(function(r){ agg.qualityCheck.records.push(r); });
+      if(qc.improvementPlan) agg.qualityCheck.improvementPlan=agg.qualityCheck.improvementPlan.concat(qc.improvementPlan);
+      var w=d.warning||{}; agg.warning.total+=(w.total||0);
+      (w.records||[]).forEach(function(r){ agg.warning.records.push(r); });
+      var bt=w.byType||{}; Object.keys(bt).forEach(function(t){ agg.warning.byType[t]=(agg.warning.byType[t]||0)+bt[t]; });
+    });
+    ext.replyRate = ext.atCount? Math.round(ext.replied/ext.atCount*100):0;
+    ext.perColleague=Object.keys(ext.perColleague).map(function(k){ var a=ext.perColleague[k]; a.avgReplyTime=a._n?Math.round(a._sa/a._n):'—'; a.maxReplyTime=a._sm||'—'; delete a._sa;delete a._n;delete a._sm; return a; });
+    int_.perColleague=Object.keys(int_.perColleague).map(function(k){ return int_.perColleague[k]; }).sort(function(a,b){ return b.sent-a.sent; });
+    if(int_.perColleague.length){ int_.topSender={name:int_.perColleague[0].name,count:int_.perColleague[0].sent}; }
+    if(agg.qualityCheck.records.length>300) agg.qualityCheck.records=agg.qualityCheck.records.slice(0,300);
+    if(agg.warning.records.length>300) agg.warning.records=agg.warning.records.slice(0,300);
+    agg.qualityCheck.lastRecord=agg.qualityCheck.records.length?agg.qualityCheck.records[agg.qualityCheck.records.length-1]:null;
+    return agg;
+  }
+  // 区间视图 = 同一张单日卡片样式，但数据换成区间聚合（复用全部单日生成器，样式不变）
+  function odsRangeReportHtml(list){
+    var agg=odsAggregate(list);
+    var label=list[0]+' ~ '+list[list.length-1];
+    var n=list.length;
+    var now=new Date();
+    var genTime=now.getFullYear()+'-'+String(now.getMonth()+1).padStart(2,'0')+'-'+String(now.getDate()).padStart(2,'0')+' '+String(now.getHours()).padStart(2,'0')+':'+String(now.getMinutes()).padStart(2,'0');
+    var wo=agg.ops.workOrder;
+    var html='<div class="single-report">'+
+      '<div class="header"><h1>运营数据汇总日报（区间）</h1><div class="sub">统计区间：'+label+' ｜ 共 '+n+' 天 ｜ 数据范围：客服对接 · 内部消息 · 运营处理量(含工单) · 素养检查（区间检出问题） · 预警看板（西安未处理预警）</div></div>'+
+      '<div class="section"><div class="section-title">板块一 · 消息对接统计</div>'+genMessageCards(agg)+'</div>'+
+      '<div class="section"><div class="section-title">板块二 · 区间运营处理量</div><div class="panel"><div class="ops-grid">'+genOpsGrid(agg)+'</div></div>'+
+      '<div class="panel wo-section"><div class="wo-header">工单处理量明细 · 各区域日工单（西安'+wo['西安']+' 太原'+wo['太原']+' 兰州'+wo['兰州']+'） ｜ 区间合计 <strong>'+wo.total+'</strong> 单</div>'+genWorkorderBars(agg)+'</div>'+
+      '<div class="panel chart-section"><div class="chart-title">运营处理量分布 · 各指标对比</div><div class="chart-wrap">'+genBarChart(agg)+'</div></div></div>'+
+      '<div class="section"><div class="section-title">板块三 · 素养检查（区间检出问题）</div><div class="panel">'+genQualityCheckSection(agg)+'</div></div>'+
+      '<div class="section"><div class="section-title">板块四 · 预警看板（西安未处理预警）</div><div class="panel">'+genWarningSection(agg)+'</div></div>'+
+      '<div class="footer">报告生成时间：'+genTime+' ｜ 数据来源：飞书群消息 + 飞书表格「抖音交付、稽核汇总」+ 飞书多维表「预警未处理明细 / 素养检查」</div></div>';
+    // 区间口径下把"当日"措辞改为"区间"，其余样式完全沿用单日卡片
+    html=html.replace(/当日素养检查/g,'区间素养检查').replace(/当日检出问题/g,'区间检出问题').replace(/当日无素养检查/g,'区间无素养检查').replace(/当日西安未处理预警/g,'区间西安未处理预警').replace(/当日西安无未处理预警/g,'区间西安无未处理预警');
+    return html;
   }
   function odsRender(date){ $('odsContent').innerHTML=odsReportHtml(date); }
   function odsRenderRange(from,to){
@@ -1053,7 +1097,7 @@
     if(!list.length){ $('odsContent').innerHTML='<div class="card">所选区间（'+from+' ~ '+to+'）暂无运营数据</div>'; return; }
     list.sort();
     if(list.length===1){ odsRender(list[0]); return; }
-    $('odsContent').innerHTML=odsRangeTableHtml(list);
+    $('odsContent').innerHTML=odsRangeReportHtml(list);
   }
   function odsSetQuick(key){ document.querySelectorAll('#page-ops-day .quick button').forEach(function(b){ b.classList.toggle('active', b.dataset.range===key); }); }
   function odsMatchQuick(){ var s=$('odStart').value, e=$('odEnd').value, min=dates[0], max=dates[dates.length-1]; if(s===min&&e===max) return 'all'; var n7=Math.max(0,dates.length-7), n3=Math.max(0,dates.length-3); if(s===dates[n7]&&e===max) return '7'; if(s===dates[n3]&&e===max) return '3'; return ''; }
@@ -1069,7 +1113,7 @@
     if(s.value===e.value){ if(v) v.textContent='当前视图：单日详情 '+s.value; odsRender(s.value); }
     else {
       var cnt=dates.filter(function(d){ return d>=s.value && d<=e.value; }).length;
-      if(v) v.textContent='当前视图：区间汇总 '+s.value+' ~ '+e.value+'（'+cnt+' 天）';
+      if(v) v.textContent='当前视图：区间详情 '+s.value+' ~ '+e.value+'（'+cnt+' 天）';
       odsRenderRange(s.value,e.value);
     }
   }
