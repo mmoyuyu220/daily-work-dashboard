@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-<meta name="build" content="20261017T1137">
+<meta name="build" content="20261017T1148">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -225,6 +225,13 @@
   .ops-table tr:last-child td{ border-bottom:none; }
   .ops-table .total-row{ background:var(--amber-bg); font-weight:700; }
   .ops-table .total-row td{ color:#1f2329; }
+  .range-summary{ margin:2px 0 12px; }
+  .rs-title{ font-size:15px; font-weight:700; color:#1f2329; }
+  .rs-note{ font-size:12px; color:#86909c; line-height:1.6; margin-top:4px; }
+  .table-wrap{ overflow-x:auto; }
+  .ops-table .strong{ font-weight:700; color:#1f2329; }
+  .ops-table .c-date{ font-weight:600; color:#1f2329; white-space:nowrap; }
+  .cur-view{ margin-top:10px; font-size:12.5px; font-weight:600; color:#3370ff; background:#eef3ff; border:1px solid #d6e2ff; border-radius:8px; padding:6px 10px; display:inline-block; }
   .ctable-block{ margin-top:14px; }
   .ctable-title{ font-size:13.5px; font-weight:600; color:#1f2329; margin:12px 0 6px; }
   .ctable-desc{ font-size:11.5px; color:#86909c; line-height:1.65; margin-bottom:10px; }
@@ -662,6 +669,7 @@
                 <div class="btn-row"><button class="primary" id="odApply">应用筛选</button><button class="secondary" id="odReset">重置为全量</button></div>
               </div>
               <div class="quick"><span>区间快速选择：</span><button data-range="all" class="active">全部</button><button data-range="7">近7天</button><button data-range="3">近3天</button></div>
+              <div class="cur-view" id="odView"></div>
             </div>
             <div id="odsContent"></div>
           </div>
@@ -826,12 +834,12 @@
   <div id="calendar" class="calendar" style="display:none;"></div>
   <div class="line-tip" id="lineTip"></div>
 
-  <script src="xian_data.js?v=20261017T1137"></script>
-  <script src="ops_data.js?v=20261017T1137"></script>
-  <script src="ocs_data.js?v=20261017T1137"></script>
-  <script src="exp_data.js?v=20261017T1137"></script>
-  <script src="metric_track.js?v=20261017T1137"></script>
-  <script src="chart.umd.min.js?v=20261017T1137"></script>
+  <script src="xian_data.js?v=20261017T1148"></script>
+  <script src="ops_data.js?v=20261017T1148"></script>
+  <script src="ocs_data.js?v=20261017T1148"></script>
+  <script src="exp_data.js?v=20261017T1148"></script>
+  <script src="metric_track.js?v=20261017T1148"></script>
+  <script src="chart.umd.min.js?v=20261017T1148"></script>
 <script>
 (function(){
   var $ = function(id){ return document.getElementById(id); };
@@ -1004,38 +1012,84 @@
       '<div class="section"><div class="section-title">板块四 · 预警看板（西安未处理预警）</div><div class="panel">'+genWarningSection(cur)+'</div></div>'+
       '<div class="footer">报告生成时间：'+genTime+' ｜ 数据来源：飞书群消息 + 飞书表格「抖音交付、稽核汇总」+ 飞书多维表「预警未处理明细 / 素养检查」</div></div>';
   }
+  function odsRowMetrics(date){
+    var d=D[date]; if(!d) return null;
+    var ext=d.messages.external, int_=d.messages.internal, proc=d.ops.processing, wo=d.ops.workOrder;
+    var dy=d.ops.douyinAudit||0, pr=d.ops.pickupReturn||0;
+    var procSum=Object.keys(proc).reduce(function(a,k){ return k==='pickupReturn'?a:a+(+proc[k]||0); },0);
+    var total=procSum+wo.total+dy+pr;
+    return {date:date, at:ext.atCount||0, reply:ext.replyRate||0, sent:int_.sevenSent||0,
+            total:total, wx:wo['西安']||0, wt:wo['太原']||0, wl:wo['兰州']||0, pr:pr, dy:dy,
+            qc:(d.qualityCheck&&d.qualityCheck.newCount)||0, warn:(d.warning&&d.warning.total)||0};
+  }
+  function odsRangeTableHtml(list){
+    var cols=[['日期','date'],['外部@次数','at'],['外部回复率%','reply'],['内部7人发送','sent'],
+              ['处理总量','total'],['工单·西安','wx'],['工单·太原','wt'],['工单·兰州','wl'],
+              ['取退货量','pr'],['抖音稽核','dy'],['素养检出','qc'],['未处理预警','warn']];
+    var head='<thead><tr>'+cols.map(function(c){return '<th'+(c[1]==='date'?' class="c-date"':'')+'>'+c[0]+'</th>';}).join('')+'</tr></thead>';
+    var sums={}; cols.forEach(function(c){ if(c[1]!=='date') sums[c[1]]=0; });
+    var replySum=0, n=list.length;
+    var bodyRows=list.map(function(date){
+      var m=odsRowMetrics(date); if(!m) return '';
+      cols.forEach(function(c){ if(c[1]!=='date') sums[c[1]]+=(+m[c[1]]||0); });
+      replySum+=(+m.reply||0);
+      return '<tr><td class="c-date">'+date+'</td>'
+        +'<td>'+m.at+'</td><td>'+m.reply+'%</td><td>'+m.sent+'</td>'
+        +'<td class="strong">'+m.total+'</td><td>'+m.wx+'</td><td>'+m.wt+'</td><td>'+m.wl+'</td>'
+        +'<td>'+m.pr+'</td><td>'+m.dy+'</td><td>'+m.qc+'</td><td>'+m.warn+'</td></tr>';
+    }).join('');
+    var avgReply=n?Math.round(replySum/n):0;
+    var totalRow='<tr class="total-row"><td class="c-date">合计 · '+n+'天</td>'
+      +'<td>'+sums.at+'</td><td>'+avgReply+'%</td><td>'+sums.sent+'</td>'
+      +'<td class="strong">'+sums.total+'</td><td>'+sums.wx+'</td><td>'+sums.wt+'</td><td>'+sums.wl+'</td>'
+      +'<td>'+sums.pr+'</td><td>'+sums.dy+'</td><td>'+sums.qc+'</td><td>'+sums.warn+'</td></tr>';
+    return '<div class="range-summary"><div class="rs-title">区间运营汇总（'+n+' 天 · '+list[0]+' ~ '+list[n-1]+'）</div>'
+      +'<div class="rs-note">所选区间内每日运营核心指标，一表呈现；合计行为区间累加（回复率为区间均值）。将「开始/结束」设为同一天可查看该日单日详情。</div></div>'
+      +'<div class="table-wrap"><table class="ops-table range-table">'+head+'<tbody>'+bodyRows+totalRow+'</tbody></table></div>';
+  }
   function odsRender(date){ $('odsContent').innerHTML=odsReportHtml(date); }
   function odsRenderRange(from,to){
     var list=dates.filter(function(d){ return d>=from && d<=to && _hasReal(d); });
     if(!list.length){ $('odsContent').innerHTML='<div class="card">所选区间（'+from+' ~ '+to+'）暂无运营数据</div>'; return; }
-    $('odsContent').innerHTML=list.map(odsReportHtml).join('<div class="rep-sep"></div>');
+    list.sort();
+    if(list.length===1){ odsRender(list[0]); return; }
+    $('odsContent').innerHTML=odsRangeTableHtml(list);
   }
   function odsSetQuick(key){ document.querySelectorAll('#page-ops-day .quick button').forEach(function(b){ b.classList.toggle('active', b.dataset.range===key); }); }
   function odsMatchQuick(){ var s=$('odStart').value, e=$('odEnd').value, min=dates[0], max=dates[dates.length-1]; if(s===min&&e===max) return 'all'; var n7=Math.max(0,dates.length-7), n3=Math.max(0,dates.length-3); if(s===dates[n7]&&e===max) return '7'; if(s===dates[n3]&&e===max) return '3'; return ''; }
+  function odsApply(){
+    var s=$('odStart'), e=$('odEnd');
+    var min=dates[0], max=dates[dates.length-1];
+    if(s.value>max)s.value=max; if(e.value>max)e.value=max;
+    if(s.value<min)s.value=min; if(e.value<min)e.value=min;
+    if(s.value>e.value){ var t=s.value; s.value=e.value; e.value=t; }
+    if($('odDay')) $('odDay').value=e.value;
+    odsSetQuick(odsMatchQuick());
+    var v=$('odView');
+    if(s.value===e.value){ if(v) v.textContent='当前视图：单日详情 '+s.value; odsRender(s.value); }
+    else {
+      var cnt=dates.filter(function(d){ return d>=s.value && d<=e.value; }).length;
+      if(v) v.textContent='当前视图：区间汇总 '+s.value+' ~ '+e.value+'（'+cnt+' 天）';
+      odsRenderRange(s.value,e.value);
+    }
+  }
   function initOpsDay(){
     var s=$('odStart'), e=$('odEnd'), min=dates[0], max=dates[dates.length-1];
     s.min=e.min=min; s.max=e.max=max;
     s.value=max; e.value=max; // 默认显示最新一天（单日详情语义）
     if($('odDay')) $('odDay').value=max;
-    odsSetQuick(''); // 默认单日，不高亮任何区间
-    odsRender(max);
-    $('odApply').onclick=function(){
-      if(s.value>max) s.value=max; if(e.value>max) e.value=max;
-      if(s.value<min) s.value=min; if(e.value<min) e.value=min;
-      if(s.value>e.value){ var t=s.value; s.value=e.value; e.value=t; }
-      if($('odDay')) $('odDay').value=e.value;
-      odsSetQuick(odsMatchQuick());
-      odsRenderRange(s.value,e.value);
-    };
-    $('odReset').onclick=function(){ s.value=min; e.value=max; if($('odDay')) $('odDay').value=max; odsSetQuick('all'); odsRenderRange(min,max); };
+    odsSetQuick('');
+    odsApply();
+    $('odApply').onclick=odsApply;
+    $('odReset').onclick=function(){ s.value=min; e.value=max; if($('odDay')) $('odDay').value=max; odsSetQuick('all'); odsApply(); };
     document.querySelectorAll('#page-ops-day .quick button').forEach(function(btn){
-      btn.onclick=function(){ odsSetQuick(btn.dataset.range); if(btn.dataset.range==='all'){ s.value=min; e.value=max; } else { var n=parseInt(btn.dataset.range,10), idx=Math.max(0,dates.length-n); s.value=dates[idx]; e.value=max; } if($('odDay')) $('odDay').value=e.value; odsRenderRange(s.value,e.value); };
+      btn.onclick=function(){ odsSetQuick(btn.dataset.range); if(btn.dataset.range==='all'){ s.value=min; e.value=max; } else { var n=parseInt(btn.dataset.range,10), idx=Math.max(0,dates.length-n); s.value=dates[idx]; e.value=max; } if($('odDay')) $('odDay').value=e.value; odsApply(); };
     });
     var d=$('odDay'); if(d){ d.min=min; d.max=max; d.value=max;
-      d.onchange=function(){ var day=d.value; if(day<s.value) s.value=day; if(day>e.value) e.value=day; odsSetQuick(odsMatchQuick()); odsRender(day); };
+      d.onchange=function(){ var day=d.value; s.value=day; e.value=day; odsSetQuick(''); odsApply(); };
     }
-    $('odDayToday').onclick=function(){ if($('odDay')) $('odDay').value=max; s.value=max; e.value=max; odsSetQuick(''); odsRender(max); };
-    $('odDayYesterday').onclick=function(){ var idx=dates.indexOf(max); var y=dates[Math.max(0,idx-1)]; if($('odDay')) $('odDay').value=y; s.value=y; e.value=max; odsSetQuick(''); odsRender(y); };
+    $('odDayToday').onclick=function(){ if($('odDay')) $('odDay').value=max; s.value=max; e.value=max; odsSetQuick(''); odsApply(); };
+    $('odDayYesterday').onclick=function(){ var idx=dates.indexOf(max); var y=dates[Math.max(0,idx-1)]; if($('odDay')) $('odDay').value=y; s.value=y; e.value=max; odsSetQuick(''); odsApply(); };
   }
 
   // ===================== 运营-趋势分析 =====================
