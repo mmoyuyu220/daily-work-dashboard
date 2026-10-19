@@ -26230,5 +26230,272 @@ window.DASHBOARD_DATA = {
         "质量素养：拆修/质检/发货环节自检互检，问题不过夜，当班次闭环并复检留痕。"
       ]
     }
+  },
+  "2026-10-18": {
+    "date": "2026-10-18",
+    "messages": {
+      "external": {
+        "atCount": 7,
+        "replyRate": 86,
+        "replied": 6,
+        "unreplied": 1,
+        "groupCount": 13,
+        "colleagueCount": 7,
+        "perColleague": [
+          {
+            "name": "刘思凡",
+            "atCount": 0,
+            "repliedCount": 0,
+            "repliedByOthers": 0,
+            "unfollowed": 0,
+            "avgReplyTime": null,
+            "maxReplyTime": null,
+            "groups": []
+          },
+          {
+            "name": "王妙星",
+            "atCount": 0,
+            "repliedCount": 0,
+            "repliedByOthers": 0,
+            "unfollowed": 0,
+            "avgReplyTime": null,
+            "maxReplyTime": null,
+            "groups": []
+          },
+          {
+            "name": "杨凡凡",
+            "atCount": 1,
+            "repliedCount": 0,
+            "repliedByOthers": 0,
+            "unfollowed": 1,
+            "avgReplyTime": null,
+            "maxReplyTime": null,
+            "groups": [
+              "西安门店运营中心对接群"
+            ]
+          },
+          {
+            "name": "马红霞",
+            "atCount": 2,
+            "repliedCount": 3,
+            "repliedByOthers": 0,
+            "unfollowed": 0,
+            "avgReplyTime": 22.0,
+            "maxReplyTime": 63.0,
+            "groups": [
+              "C端小仓-客服对接群"
+            ]
+          },
+          {
+            "name": "赵豫思",
+            "atCount": 0,
+            "repliedCount": 0,
+            "repliedByOthers": 0,
+            "unfollowed": 0,
+            "avgReplyTime": null,
+            "maxReplyTime": null,
+            "groups": []
+          },
+          {
+            "name": "洪朵",
+            "atCount": 0,
+            "repliedCount": 0,
+            "repliedByOthers": 0,
+            "unfollowed": 0,
+            "avgReplyTime": null,
+            "maxReplyTime": null,
+            "groups": []
+          },
+          {
+            "name": "张霞霞",
+            "atCount": 4,
+            "repliedCount": 3,
+            "repliedByOthers": 1,
+            "unfollowed": 0,
+            "avgReplyTime": 8.0,
+            "maxReplyTime": 12.0,
+            "groups": [
+              "加盟调拨异常沟通群西安",
+              "C端小仓-客服对接群"
+            ]
+          }
+        ],
+        "replyDetails": [
+          {
+            "group": "加盟调拨异常沟通群西安",
+            "atPerson": "张霞霞",
+            "atTime": "2026-10-18 10:50",
+            "actualReplier": "张霞霞",
+            "responseMin": 3.0,
+            "status": "已回复"
+          },
+          {
+            "group": "加盟调拨异常沟通群西安",
+            "atPerson": "张霞霞",
+            "atTime": "2026-10-18 11:21",
+            "actualReplier": "张霞霞",
+            "responseMin": 9.0,
+            "status": "已回复"
+          },
+          {
+            "group": "加盟调拨异常沟通群西安",
+            "atPerson": "张霞霞",
+            "atTime": "2026-10-18 12:31",
+            "actualReplier": "马红霞",
+            "responseMin": 63.0,
+            "status": "已回复"
+          },
+          {
+            "group": "C端小仓-客服对接群",
+            "atPerson": "马红霞",
+            "atTime": "2026-10-18 10:28",
+            "actualReplier": "马红霞",
+            "responseMin": 3.0,
+            "status": "已回复"
+          },
+          {
+            "group": "C端小仓-客服对接群",
+            "atPerson": "马红霞",
+            "atTime": "2026-10-18 10:36",
+            "actualReplier": "马红霞",
+            "responseMin": 0.0,
+            "status": "已回复"
+          },
+          {
+            "group": "C端小仓-客服对接群",
+            "atPerson": "张霞霞",
+            "atTime": "2026-10-18 11:56",
+            "actualReplier": "张霞霞",
+            "responseMin": 12.0,
+            "status": "已回复"
+          },
+          {
+            "group": "西安门店运营中心对接群",
+            "atPerson": "杨凡凡",
+            "atTime": "2026-10-18 10:53",
+            "actualReplier": "",
+            "responseMin": 0,
+            "status": "未跟进"
+          }
+        ]
+      },
+      "internal": {
+        "sevenSent": 74,
+        "groupCount": 11,
+        "sevenShare": 54,
+        "topSender": {
+          "name": "张霞霞",
+          "count": 27
+        },
+        "per_user": {
+          "马红霞": 24,
+          "赵豫思": 20,
+          "张霞霞": 27,
+          "刘思凡": 2,
+          "王妙星": 1
+        },
+        "perColleague": [
+          {
+            "name": "刘思凡",
+            "sent": 2,
+            "groups": [
+              "美美桑内"
+            ]
+          },
+          {
+            "name": "王妙星",
+            "sent": 1,
+            "groups": [
+              "抖音业务"
+            ]
+          },
+          {
+            "name": "杨凡凡",
+            "sent": 0,
+            "groups": []
+          },
+          {
+            "name": "马红霞",
+            "sent": 24,
+            "groups": [
+              "西安仓储",
+              "取退货群",
+              "异常处理自己人",
+              "美美桑内",
+              "西安异常"
+            ]
+          },
+          {
+            "name": "赵豫思",
+            "sent": 20,
+            "groups": [
+              "取退货群",
+              "西太兰体验运营沟通交流群",
+              "美美桑内"
+            ]
+          },
+          {
+            "name": "洪朵",
+            "sent": 0,
+            "groups": []
+          },
+          {
+            "name": "张霞霞",
+            "sent": 27,
+            "groups": [
+              "取退货群",
+              "异常处理自己人",
+              "美美桑内"
+            ]
+          }
+        ]
+      }
+    },
+    "ops": {
+      "processing": {
+        "异常上下架量": 47,
+        "对外对接(电话)": 6,
+        "对外对接(微信/企微)": 10,
+        "异常处理量": 28,
+        "外呼量": 4,
+        "视频调取量": 30
+      },
+      "workOrder": {
+        "total": 2,
+        "西安": 1,
+        "太原": 0,
+        "兰州": 1
+      },
+      "douyinAudit": 0,
+      "pickupReturn": 73
+    },
+    "warning": {
+      "date": "2026-10-19",
+      "total": 0,
+      "byType": {},
+      "records": [],
+      "source": "历史预警未处理反馈记录"
+    },
+    "qualityCheck": {
+      "newCount": 0,
+      "totalChecks": 8,
+      "improvement": "当日未检出素养问题（最近一次检出为 2026-10-17）。",
+      "records": [],
+      "lastRecord": {
+        "date": "2026-10-17",
+        "team": "拆修",
+        "point": "5S",
+        "owner": "泽伟",
+        "issue": "人员离岗后工位凌乱",
+        "issueField": "问题描述",
+        "hasImage": true
+      },
+      "improvementPlan": [
+        "5S 现场：物料/工具/机器定置定位，通道无杂物，工位每日班前班后整理，问题图片即整改证据。",
+        "基本素养：按规定着装挂牌、按标准作业流程操作，不简化、不跳步，关键动作有自检确认。",
+        "安全素养：用电/设备/搬运安全合规，发现隐患立即上报并隔离，杜绝带病作业。",
+        "质量素养：拆修/质检/发货环节自检互检，问题不过夜，当班次闭环并复检留痕。"
+      ]
+    }
   }
 };
