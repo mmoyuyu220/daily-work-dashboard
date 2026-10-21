@@ -3,7 +3,7 @@
 // weeks: 周1..周N（N=至少一张周度表有真实数据的最大周，全空未来周已截断）；比率以数值存储（0.054 = 0.054%，96.19 = 96.19%）；空值=null。
 // 预警标记：metric.warn{dir:'gt'|'lt',thr,label} 或 metric.flagNonZero。
 window.EXP_DATA = {
- "updated": "2026-10-14",
+ "updated": "2026-10-21",
  "weeks": [
   1,
   2,
@@ -44,7 +44,8 @@ window.EXP_DATA = {
   37,
   38,
   39,
-  40
+  40,
+  41
  ],
  "groups": {
   "baoSun": {
@@ -98,7 +99,7 @@ window.EXP_DATA = {
       12141.0,
       12703.0,
       13409.0,
-      null,
+      15803.0,
       null,
       null,
       null
@@ -153,7 +154,7 @@ window.EXP_DATA = {
       14.0,
       9.0,
       11.0,
-      null,
+      15.0,
       null,
       null,
       null
@@ -208,7 +209,7 @@ window.EXP_DATA = {
       0.115,
       0.071,
       0.082,
-      null,
+      0.095,
       null,
       null,
       null
@@ -318,7 +319,7 @@ window.EXP_DATA = {
       2.0,
       1.0,
       1.0,
-      null,
+      2.0,
       null,
       null,
       null
@@ -373,7 +374,7 @@ window.EXP_DATA = {
       0.025,
       0.016,
       0.007,
-      null,
+      0.013,
       null,
       null,
       null
@@ -439,7 +440,7 @@ window.EXP_DATA = {
       10498.0,
       11380.0,
       12031.0,
-      null,
+      14012.0,
       null,
       null,
       null
@@ -494,7 +495,7 @@ window.EXP_DATA = {
       0.0,
       0.0,
       1.0,
-      null,
+      0.0,
       null,
       null,
       null
@@ -604,7 +605,7 @@ window.EXP_DATA = {
       4471.0,
       4784.0,
       4199.0,
-      null,
+      5050.0,
       null,
       null,
       null
@@ -659,7 +660,7 @@ window.EXP_DATA = {
       0.0,
       0.0,
       0.0,
-      null,
+      0.0,
       null,
       null,
       null
@@ -859,7 +860,7 @@ window.EXP_DATA = {
       0.7,
       0.72,
       1.64,
-      null,
+      0.89,
       null,
       null,
       null
@@ -918,7 +919,7 @@ window.EXP_DATA = {
       0.7,
       1.1,
       0.87,
-      null,
+      1.98,
       null,
       null,
       null
@@ -977,7 +978,7 @@ window.EXP_DATA = {
       1.43,
       null,
       0.9,
-      null,
+      1.27,
       null,
       null,
       null
@@ -1043,7 +1044,7 @@ window.EXP_DATA = {
       100.0,
       100.0,
       100.0,
-      null,
+      100.0,
       null,
       null,
       null
