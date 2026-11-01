@@ -30288,10 +30288,10 @@ window.DASHBOARD_DATA = {
         "视频调取量": 38
       },
       "workOrder": {
-        "total": 0,
-        "西安": 0,
+        "total": 12,
+        "西安": 4,
         "太原": 0,
-        "兰州": 0
+        "兰州": 8
       },
       "douyinAudit": 0,
       "pickupReturn": 69
