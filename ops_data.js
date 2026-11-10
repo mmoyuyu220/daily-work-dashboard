@@ -32878,5 +32878,376 @@ window.DASHBOARD_DATA = {
         "质量素养：拆修/质检/发货环节自检互检，问题不过夜，当班次闭环并复检留痕。"
       ]
     }
+  },
+  "2026-11-09": {
+    "date": "2026-11-09",
+    "messages": {
+      "external": {
+        "atCount": 15,
+        "replyRate": 67,
+        "replied": 10,
+        "unreplied": 5,
+        "groupCount": 13,
+        "colleagueCount": 7,
+        "perColleague": [
+          {
+            "name": "刘思凡",
+            "atCount": 2,
+            "repliedCount": 0,
+            "repliedByOthers": 2,
+            "unfollowed": 0,
+            "avgReplyTime": null,
+            "maxReplyTime": null,
+            "groups": [
+              "C2B供应链能力中心客诉对接"
+            ]
+          },
+          {
+            "name": "王妙星",
+            "atCount": 0,
+            "repliedCount": 0,
+            "repliedByOthers": 0,
+            "unfollowed": 0,
+            "avgReplyTime": null,
+            "maxReplyTime": null,
+            "groups": []
+          },
+          {
+            "name": "杨凡凡",
+            "atCount": 7,
+            "repliedCount": 8,
+            "repliedByOthers": 0,
+            "unfollowed": 2,
+            "avgReplyTime": 2.5,
+            "maxReplyTime": 10.0,
+            "groups": [
+              "C2B供应链能力中心客诉对接",
+              "加盟调拨异常沟通群西安",
+              "C端小仓-客服对接群",
+              "西安门店运营中心对接群"
+            ]
+          },
+          {
+            "name": "马红霞",
+            "atCount": 3,
+            "repliedCount": 2,
+            "repliedByOthers": 1,
+            "unfollowed": 1,
+            "avgReplyTime": 3.5,
+            "maxReplyTime": 6.0,
+            "groups": [
+              "C端小仓-客服对接群",
+              "西安门店运营中心对接群"
+            ]
+          },
+          {
+            "name": "赵豫思",
+            "atCount": 0,
+            "repliedCount": 0,
+            "repliedByOthers": 0,
+            "unfollowed": 0,
+            "avgReplyTime": null,
+            "maxReplyTime": null,
+            "groups": []
+          },
+          {
+            "name": "洪朵",
+            "atCount": 0,
+            "repliedCount": 0,
+            "repliedByOthers": 0,
+            "unfollowed": 0,
+            "avgReplyTime": null,
+            "maxReplyTime": null,
+            "groups": []
+          },
+          {
+            "name": "张霞霞",
+            "atCount": 3,
+            "repliedCount": 0,
+            "repliedByOthers": 1,
+            "unfollowed": 2,
+            "avgReplyTime": null,
+            "maxReplyTime": null,
+            "groups": [
+              "西安门店运营中心对接群"
+            ]
+          }
+        ],
+        "replyDetails": [
+          {
+            "group": "C2B供应链能力中心客诉对接",
+            "atPerson": "刘思凡",
+            "atTime": "2026-11-09 10:20",
+            "actualReplier": "杨凡凡",
+            "responseMin": 2.0,
+            "status": "已回复"
+          },
+          {
+            "group": "C2B供应链能力中心客诉对接",
+            "atPerson": "刘思凡",
+            "atTime": "2026-11-09 15:57",
+            "actualReplier": "杨凡凡",
+            "responseMin": 10.0,
+            "status": "已回复"
+          },
+          {
+            "group": "C2B供应链能力中心客诉对接",
+            "atPerson": "杨凡凡",
+            "atTime": "2026-11-09 16:08",
+            "actualReplier": "杨凡凡",
+            "responseMin": 1.0,
+            "status": "已回复"
+          },
+          {
+            "group": "加盟调拨异常沟通群西安",
+            "atPerson": "杨凡凡",
+            "atTime": "2026-11-09 13:51",
+            "actualReplier": "杨凡凡",
+            "responseMin": 1.0,
+            "status": "已回复"
+          },
+          {
+            "group": "C端小仓-客服对接群",
+            "atPerson": "马红霞",
+            "atTime": "2026-11-09 16:25",
+            "actualReplier": "杨凡凡",
+            "responseMin": 2.0,
+            "status": "已回复"
+          },
+          {
+            "group": "C端小仓-客服对接群",
+            "atPerson": "杨凡凡",
+            "atTime": "2026-11-09 16:28",
+            "actualReplier": "杨凡凡",
+            "responseMin": 1.0,
+            "status": "已回复"
+          },
+          {
+            "group": "C端小仓-客服对接群",
+            "atPerson": "杨凡凡",
+            "atTime": "2026-11-09 16:30",
+            "actualReplier": "杨凡凡",
+            "responseMin": 2.0,
+            "status": "已回复"
+          },
+          {
+            "group": "C端小仓-客服对接群",
+            "atPerson": "杨凡凡",
+            "atTime": "2026-11-09 16:34",
+            "actualReplier": "杨凡凡",
+            "responseMin": 1.0,
+            "status": "已回复"
+          },
+          {
+            "group": "西安门店运营中心对接群",
+            "atPerson": "马红霞",
+            "atTime": "2026-11-09 09:59",
+            "actualReplier": "马红霞",
+            "responseMin": 1.0,
+            "status": "已回复"
+          },
+          {
+            "group": "西安门店运营中心对接群",
+            "atPerson": "马红霞",
+            "atTime": "2026-11-09 10:03",
+            "actualReplier": "",
+            "responseMin": 0,
+            "status": "未跟进"
+          },
+          {
+            "group": "西安门店运营中心对接群",
+            "atPerson": "张霞霞",
+            "atTime": "2026-11-09 16:00",
+            "actualReplier": "",
+            "responseMin": 0,
+            "status": "未跟进"
+          },
+          {
+            "group": "西安门店运营中心对接群",
+            "atPerson": "张霞霞",
+            "atTime": "2026-11-09 16:41",
+            "actualReplier": "马红霞",
+            "responseMin": 6.0,
+            "status": "已回复"
+          },
+          {
+            "group": "西安门店运营中心对接群",
+            "atPerson": "张霞霞",
+            "atTime": "2026-11-09 16:41",
+            "actualReplier": "",
+            "responseMin": 0,
+            "status": "未跟进"
+          },
+          {
+            "group": "西安门店运营中心对接群",
+            "atPerson": "杨凡凡",
+            "atTime": "2026-11-09 17:48",
+            "actualReplier": "",
+            "responseMin": 0,
+            "status": "未跟进"
+          },
+          {
+            "group": "西安门店运营中心对接群",
+            "atPerson": "杨凡凡",
+            "atTime": "2026-11-09 20:20",
+            "actualReplier": "",
+            "responseMin": 0,
+            "status": "未跟进"
+          }
+        ]
+      },
+      "internal": {
+        "sevenSent": 88,
+        "groupCount": 11,
+        "sevenShare": 53,
+        "topSender": {
+          "name": "杨凡凡",
+          "count": 40
+        },
+        "per_user": {
+          "马红霞": 33,
+          "杨凡凡": 40,
+          "王妙星": 2,
+          "张霞霞": 13
+        },
+        "perColleague": [
+          {
+            "name": "刘思凡",
+            "sent": 0,
+            "groups": []
+          },
+          {
+            "name": "王妙星",
+            "sent": 2,
+            "groups": [
+              "取退货群",
+              "抖音业务"
+            ]
+          },
+          {
+            "name": "杨凡凡",
+            "sent": 40,
+            "groups": [
+              "取退货群",
+              "西太兰体验运营沟通交流群",
+              "异常处理自己人",
+              "美美桑内",
+              "西安异常"
+            ]
+          },
+          {
+            "name": "马红霞",
+            "sent": 33,
+            "groups": [
+              "取退货群",
+              "西太兰体验运营沟通交流群",
+              "异常处理自己人",
+              "美美桑内"
+            ]
+          },
+          {
+            "name": "赵豫思",
+            "sent": 0,
+            "groups": []
+          },
+          {
+            "name": "洪朵",
+            "sent": 0,
+            "groups": []
+          },
+          {
+            "name": "张霞霞",
+            "sent": 13,
+            "groups": [
+              "取退货群",
+              "异常处理自己人",
+              "西安sup主力部队"
+            ]
+          }
+        ]
+      }
+    },
+    "ops": {
+      "processing": {
+        "异常上下架量": 54,
+        "对外对接(电话)": 18,
+        "对外对接(微信/企微)": 8,
+        "异常处理量": 38,
+        "外呼量": 7,
+        "视频调取量": 45
+      },
+      "workOrder": {
+        "total": 13,
+        "西安": 10,
+        "太原": 2,
+        "兰州": 1
+      },
+      "douyinAudit": 0,
+      "pickupReturn": 67
+    },
+    "warning": {
+      "date": "2026-11-10",
+      "total": 2,
+      "byType": {
+        "催质检": 2
+      },
+      "records": [
+        {
+          "itemId": "20261106145918869753",
+          "type": "催质检",
+          "timeout": "24-48H",
+          "reason": "耳机/耳麦调拨常州仓，11.8已出库，11.10早上已送达，待收货质检，出库单号：JDVB72453690975   ",
+          "center": "西安"
+        },
+        {
+          "itemId": "20261106084807536237",
+          "type": "催质检",
+          "timeout": "24-48H",
+          "reason": "笔记本调拨常州仓，11.7已出库，11.9晚上常州已质检完成入库",
+          "center": "西安"
+        }
+      ],
+      "source": "预警未处理明细"
+    },
+    "qualityCheck": {
+      "newCount": 2,
+      "totalChecks": 15,
+      "improvement": "当日检出素养问题 2 条（含问题描述），须当班次整改闭环。",
+      "records": [
+        {
+          "date": "2026-11-09",
+          "team": "收仓",
+          "point": "5S",
+          "owner": "王飞",
+          "issue": "凳子放在货架上",
+          "issueField": "问题描述",
+          "hasImage": true
+        },
+        {
+          "date": "2026-11-09",
+          "team": "发货",
+          "point": "5S",
+          "owner": "王飞",
+          "issue": "自提打包好的机器没有及时放置在自提退货规定放置区域，长时间放置在打包区，导致取货人员取货时不能及时找到对应机器，取货时间久，客户长时间等待不满意",
+          "issueField": "问题描述",
+          "hasImage": true
+        }
+      ],
+      "lastRecord": {
+        "date": "2026-11-09",
+        "team": "发货",
+        "point": "5S",
+        "owner": "王飞",
+        "issue": "自提打包好的机器没有及时放置在自提退货规定放置区域，长时间放置在打包区，导致取货人员取货时不能及时找到对应机器，取货时间久，客户长时间等待不满意",
+        "issueField": "问题描述",
+        "hasImage": true
+      },
+      "improvementPlan": [
+        "5S 现场：物料/工具/机器定置定位，通道无杂物，工位每日班前班后整理，问题图片即整改证据。",
+        "基本素养：按规定着装挂牌、按标准作业流程操作，不简化、不跳步，关键动作有自检确认。",
+        "安全素养：用电/设备/搬运安全合规，发现隐患立即上报并隔离，杜绝带病作业。",
+        "质量素养：拆修/质检/发货环节自检互检，问题不过夜，当班次闭环并复检留痕。"
+      ]
+    }
   }
 };
