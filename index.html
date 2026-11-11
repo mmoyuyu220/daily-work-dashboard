@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-<meta name="build" content="20261111T1430">
+<meta name="build" content="20261111T1435">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -834,12 +834,12 @@
   <div id="calendar" class="calendar" style="display:none;"></div>
   <div class="line-tip" id="lineTip"></div>
 
-  <script src="xian_data.js?v=20261111T1430"></script>
-  <script src="ops_data.js?v=20261111T1430"></script>
-  <script src="ocs_data.js?v=20261111T1430"></script>
-  <script src="exp_data.js?v=20261111T1430"></script>
-  <script src="metric_track.js?v=20261111T1430"></script>
-  <script src="chart.umd.min.js?v=20261111T1430"></script>
+  <script src="xian_data.js?v=20261111T1435"></script>
+  <script src="ops_data.js?v=20261111T1435"></script>
+  <script src="ocs_data.js?v=20261111T1435"></script>
+  <script src="exp_data.js?v=20261111T1435"></script>
+  <script src="metric_track.js?v=20261111T1435"></script>
+  <script src="chart.umd.min.js?v=20261111T1435"></script>
 <script>
 (function(){
   var $ = function(id){ return document.getElementById(id); };
@@ -866,7 +866,10 @@
   // ===================== 运营-单日详情 =====================
   // 默认选中最后一个「有真实数据」的日期（跳过当天空壳占位，避免打开看到一片 0）
   var selectedDate = dates[dates.length-1];
-  function _hasReal(dk){ var d=D[dk]; if(!d) return false; var ext=(d.messages&&d.messages.external)||{}; return (ext.atCount||0)>0 || ((d.ops&&Object.values(d.ops.processing||{}).reduce(function(a,b){return a+(+b||0);},0))>0) || (d.warning&&(d.warning.total||0)>0) || (d.qualityCheck&&(d.qualityCheck.newCount||0)>0); }
+  // 「检出问题=无/空」不算检出：统一过滤器（历史数据与新数据一并生效）
+  function qcRealRows(rows){ return (rows||[]).filter(function(r){ var s=((r&&r.issue)||'').replace(/[\s。．.，,、;；]/g,''); if(!s||s==='/'||s==='-'||s==='N/A') return false; return !/^(无|暂无|没有|未发现|无问题|没问题|没有问题|未见异常)$/.test(s); }); }
+  function qcRealCount(qc){ if(!qc) return 0; if(!qc.records) return qc.newCount||0; return qcRealRows(qc.records).length; }
+  function _hasReal(dk){ var d=D[dk]; if(!d) return false; var ext=(d.messages&&d.messages.external)||{}; return (ext.atCount||0)>0 || ((d.ops&&Object.values(d.ops.processing||{}).reduce(function(a,b){return a+(+b||0);},0))>0) || (d.warning&&(d.warning.total||0)>0) || qcRealCount(d.qualityCheck)>0; }
   for(var _i=dates.length-1;_i>=0;_i--){ if(_hasReal(dates[_i])){ selectedDate=dates[_i]; break; } }
   var calMode = 'single';
   var trendFromDate = dates[0];
@@ -979,13 +982,14 @@
   }
   function qcTable(rows){ if(!rows||!rows.length) return ''; return '<table class="audit-table"><thead><tr><th>日期</th><th>班组</th><th>稽核点</th><th>负责人</th><th>问题描述</th></tr></thead><tbody>'+rows.map(function(r){ return '<tr><td>'+(r.date||'')+'</td><td>'+(r.team||'')+'</td><td>'+(r.point||'')+'</td><td>'+(r.owner||'')+'</td><td>'+(r.issue||'')+'</td></tr>'; }).join('')+'</tbody></table>'; }
   function genQualityCheckSection(d){
-    var qc=d.qualityCheck||{}, newCount=qc.newCount||0, total=qc.totalChecks||0, md=d.date.slice(5).replace('-','/');
+    var qc=d.qualityCheck||{}, real=qcRealRows(qc.records), newCount=qcRealCount(qc), total=qc.totalChecks||0, md=d.date.slice(5).replace('-','/');
     var plan='';
     if(qc.improvementPlan&&qc.improvementPlan.length){ plan='<div class="plan-title">'+(newCount>0?'针对当日检出问题的改善方向':'素养检查改善方向')+'</div><ol class="plan-list">'+qc.improvementPlan.map(function(it){return '<li>'+it+'</li>';}).join('')+'</ol>'; }
-    if(newCount>0){ var alert='<div class="audit-alert"><span class="alert-icon">!</span>'+md+' 当日素养检查 '+total+' 次，检出问题 <strong>'+newCount+' 条</strong>（含问题描述），须当班次整改闭环。</div>'; var rows=(qc.records&&qc.records.length)?qc.records:(qc.lastRecord?[qc.lastRecord]:[]); return alert+(qcTable(rows)||'<div class="audit-note">'+(qc.improvement||'')+'</div>')+plan; }
-    var lrDate=qc.lastRecord?qc.lastRecord.date:'-';
-    var alert='<div class="audit-alert" style="background:#e8ffea;color:#00b42a;">'+(total>0?(md+' 当日素养检查 '+total+' 次，未检出问题。'):(md+' 当日无素养检查记录。'))+(qc.lastRecord?'以下取最近一次检出记录（'+lrDate+'）进行分析。':'')+'</div>';
-    var table=qc.lastRecord?qcTable([qc.lastRecord]):'<div class="audit-note">'+(qc.improvement||'当日未检出素养问题。')+'</div>';
+    if(newCount>0){ var alert='<div class="audit-alert"><span class="alert-icon">!</span>'+md+' 当日素养检查 '+total+' 次，检出问题 <strong>'+newCount+' 条</strong>（含问题描述），须当班次整改闭环。</div>'; var rows=real.length?real:qcRealRows(qc.lastRecord?[qc.lastRecord]:[]); return alert+(qcTable(rows)||'<div class="audit-note">'+(qc.improvement||'')+'</div>')+plan; }
+    var lr=qcRealRows(qc.lastRecord?[qc.lastRecord]:[])[0]||null;
+    var lrDate=lr?lr.date:'-';
+    var alert='<div class="audit-alert" style="background:#e8ffea;color:#00b42a;">'+(total>0?(md+' 当日素养检查 '+total+' 次，未检出问题。'):(md+' 当日无素养检查记录。'))+(lr?'以下取最近一次检出记录（'+lrDate+'）进行分析。':'')+'</div>';
+    var table=lr?qcTable([lr]):'<div class="audit-note">'+(qc.improvement||'当日未检出素养问题。')+'</div>';
     return alert+table+plan;
   }
   function genWarningSection(d){
@@ -1020,7 +1024,7 @@
     var total=procSum+wo.total+dy+pr;
     return {date:date, at:ext.atCount||0, reply:ext.replyRate||0, sent:int_.sevenSent||0,
             total:total, wx:wo['西安']||0, wt:wo['太原']||0, wl:wo['兰州']||0, pr:pr, dy:dy,
-            qc:(d.qualityCheck&&d.qualityCheck.newCount)||0, warn:(d.warning&&d.warning.total)||0};
+            qc:qcRealCount(d.qualityCheck), warn:(d.warning&&d.warning.total)||0};
   }
   // 区间聚合：把所选日期累加为一条「合成记录」，便于直接喂给原有单日生成器（保持卡片样式不变）
   function odsAggregate(list){
@@ -1054,8 +1058,8 @@
       Object.keys(proc).forEach(function(k){ if(k==='pickupReturn'){ agg.ops.pickupReturn+=(+proc[k]||0); } else { agg.ops.processing[k]=(agg.ops.processing[k]||0)+(+proc[k]||0); } });
       agg.ops.workOrder['西安']+=(wo['西安']||0); agg.ops.workOrder['太原']+=(wo['太原']||0); agg.ops.workOrder['兰州']+=(wo['兰州']||0); agg.ops.workOrder.total+=(wo.total||0);
       agg.ops.douyinAudit+=(o.douyinAudit||0);
-      var qc=d.qualityCheck||{}; agg.qualityCheck.newCount+=(qc.newCount||0); agg.qualityCheck.totalChecks+=(qc.totalChecks||0);
-      (qc.records||[]).forEach(function(r){ agg.qualityCheck.records.push(r); });
+      var qc=d.qualityCheck||{}; agg.qualityCheck.totalChecks+=(qc.totalChecks||0);
+      qcRealRows(qc.records).forEach(function(r){ agg.qualityCheck.records.push(r); });
       if(qc.improvementPlan) agg.qualityCheck.improvementPlan=agg.qualityCheck.improvementPlan.concat(qc.improvementPlan);
       var w=d.warning||{}; agg.warning.total+=(w.total||0);
       (w.records||[]).forEach(function(r){ agg.warning.records.push(r); });
@@ -1148,7 +1152,7 @@
     {key:'wo_lanzhou',name:'工单·兰州',color:'#ff7d00',get:function(d){return d.ops.workOrder['兰州'];}},
     {key:'pickup',name:'取退货量',color:'#165dff',get:function(d){return d.ops.pickupReturn||0;}},
     {key:'warn',name:'西安未处理预警',color:'#ff4d4f',get:function(d){return (d.warning&&d.warning.total)||0;}},
-    {key:'qc',name:'素养检查检出问题',color:'#d4380d',get:function(d){return (d.qualityCheck&&d.qualityCheck.newCount)||0;}},
+    {key:'qc',name:'素养检查检出问题',color:'#d4380d',get:function(d){return qcRealCount(d.qualityCheck);}},
     {key:'total',name:'含工单+取退货合计',color:'#f53f3f',get:function(d){return Object.values(d.ops.processing).reduce(function(a,b){return a+b;},0)+d.ops.workOrder.total+(d.ops.pickupReturn||0);}}
   ];
   var DEFAULT_ON=['proc','wo','pickup','warn','qc','total'];
@@ -1225,7 +1229,7 @@
   function genTrendAnalysis(rangeDates, D){
     if(!rangeDates || rangeDates.length===0) return '';
     // 排除无数据的占位日（如当天空壳），仅基于真实运营日做分析
-    function hasReal(dk){ var r=D[dk]; if(!r) return false; var e=(r.messages&&r.messages.external)||{}; var ps=Object.values((r.ops&&r.ops.processing)||{}).reduce(function(a,b){return a+b;},0); return (e.atCount||0)>0 || ps>0 || (r.qualityCheck&&(r.qualityCheck.newCount||0))>0; }
+    function hasReal(dk){ var r=D[dk]; if(!r) return false; var e=(r.messages&&r.messages.external)||{}; var ps=Object.values((r.ops&&r.ops.processing)||{}).reduce(function(a,b){return a+b;},0); return (e.atCount||0)>0 || ps>0 || qcRealCount(r.qualityCheck)>0; }
     var realRange=rangeDates.filter(hasReal); if(realRange.length===0) realRange=rangeDates;
     var excl=rangeDates.length-realRange.length;
     var replyDays=realRange.filter(function(d){ var e=(D[d]&&D[d].messages&&D[d].messages.external)||{}; return (e.atCount||0)>0; });
