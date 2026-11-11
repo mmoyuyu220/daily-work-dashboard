@@ -1,5 +1,5 @@
 window.METRIC_TRACK = {
-  "updated": "2026-11-04",
+  "updated": "2026-11-11",
   "week": {
     "cols": [
       "W1",
@@ -908,8 +908,8 @@ window.METRIC_TRACK = {
             "s": "blank"
           },
           {
-            "v": "99.4%",
-            "s": "bad"
+            "v": "",
+            "s": "blank"
           },
           {
             "v": "",
@@ -928,7 +928,7 @@ window.METRIC_TRACK = {
             "s": "bad"
           }
         ],
-        "bad": 3,
+        "bad": 2,
         "src": "8kPLsH(覆盖率·西安)"
       },
       {
@@ -1067,8 +1067,8 @@ window.METRIC_TRACK = {
             "s": "blank"
           },
           {
-            "v": "99.9%",
-            "s": "bad"
+            "v": "",
+            "s": "blank"
           },
           {
             "v": "",
@@ -1087,7 +1087,7 @@ window.METRIC_TRACK = {
             "s": "bad"
           }
         ],
-        "bad": 3,
+        "bad": 2,
         "src": "8kPLsH(覆盖率·西安)"
       },
       {
@@ -1102,8 +1102,8 @@ window.METRIC_TRACK = {
             "s": "blank"
           },
           {
-            "v": "80.90%",
-            "s": "bad"
+            "v": "",
+            "s": "blank"
           },
           {
             "v": "86.66%",
@@ -1246,11 +1246,11 @@ window.METRIC_TRACK = {
             "s": "ok"
           }
         ],
-        "bad": 21,
+        "bad": 20,
         "src": "EnRQs4LwPh7tU0tzrhecKwzznEf·3aead1",
         "base": [
           null,
-          82.44,
+          null,
           91.67,
           86.56,
           89.9,
@@ -2008,8 +2008,8 @@ window.METRIC_TRACK = {
             "s": "blank"
           },
           {
-            "v": "92.6%",
-            "s": "bad"
+            "v": "",
+            "s": "blank"
           },
           {
             "v": "",
@@ -2028,7 +2028,7 @@ window.METRIC_TRACK = {
             "s": "blank"
           }
         ],
-        "bad": 2,
+        "bad": 1,
         "src": "8kPLsH(覆盖率·西安)"
       },
       {
@@ -2167,8 +2167,8 @@ window.METRIC_TRACK = {
             "s": "blank"
           },
           {
-            "v": "62.8%",
-            "s": "bad"
+            "v": "",
+            "s": "blank"
           },
           {
             "v": "",
@@ -2187,7 +2187,7 @@ window.METRIC_TRACK = {
             "s": "blank"
           }
         ],
-        "bad": 2,
+        "bad": 1,
         "src": "8kPLsH(覆盖率·西安)"
       },
       {
@@ -2326,8 +2326,8 @@ window.METRIC_TRACK = {
             "s": "blank"
           },
           {
-            "v": "89.5%",
-            "s": "bad"
+            "v": "",
+            "s": "blank"
           },
           {
             "v": "",
@@ -2346,7 +2346,7 @@ window.METRIC_TRACK = {
             "s": "blank"
           }
         ],
-        "bad": 2,
+        "bad": 1,
         "src": "8kPLsH(覆盖率·西安)"
       },
       {
