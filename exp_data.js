@@ -3,7 +3,7 @@
 // weeks: 周1..周N（N=至少一张周度表有真实数据的最大周，全空未来周已截断）；比率以数值存储（0.054 = 0.054%，96.19 = 96.19%）；空值=null。
 // 预警标记：metric.warn{dir:'gt'|'lt',thr,label} 或 metric.flagNonZero。
 window.EXP_DATA = {
- "updated": "2026-11-04",
+ "updated": "2026-11-11",
  "weeks": [
   1,
   2,
@@ -47,7 +47,8 @@ window.EXP_DATA = {
   40,
   41,
   42,
-  43
+  43,
+  44
  ],
  "groups": {
   "baoSun": {
@@ -493,7 +494,7 @@ window.EXP_DATA = {
       14012.0,
       12185.0,
       11531.0,
-      null,
+      11232.0,
       null,
       null,
       null,
@@ -556,7 +557,7 @@ window.EXP_DATA = {
       0.0,
       0.0,
       0.0,
-      null,
+      1.0,
       null,
       null,
       null,
@@ -619,7 +620,7 @@ window.EXP_DATA = {
       null,
       null,
       null,
-      null,
+      0.0089,
       null,
       null,
       null,
@@ -682,7 +683,7 @@ window.EXP_DATA = {
       5050.0,
       5319.0,
       5583.0,
-      null,
+      6158.0,
       null,
       null,
       null,
@@ -745,7 +746,7 @@ window.EXP_DATA = {
       0.0,
       0.0,
       1.0,
-      null,
+      1.0,
       null,
       null,
       null,
@@ -808,7 +809,7 @@ window.EXP_DATA = {
       null,
       null,
       0.0179,
-      null,
+      0.0162,
       null,
       null,
       null,
@@ -988,7 +989,7 @@ window.EXP_DATA = {
       0.89,
       0.52,
       1.03,
-      null,
+      0.95,
       null,
       null,
       null,
@@ -1122,7 +1123,7 @@ window.EXP_DATA = {
       1.27,
       0.7,
       1.18,
-      null,
+      1.34,
       null,
       null,
       null,
@@ -1196,7 +1197,7 @@ window.EXP_DATA = {
       100.0,
       100.0,
       97.14,
-      null,
+      100.0,
       null,
       null,
       null,
@@ -1385,7 +1386,7 @@ window.EXP_DATA = {
       268,
       254,
       234,
-      54
+      105
      ],
      "warn": null,
      "flagNonZero": false,
