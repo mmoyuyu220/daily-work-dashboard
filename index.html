@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-<meta name="build" content="20261113T1139">
+<meta name="build" content="20261114T1042">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -834,12 +834,12 @@
   <div id="calendar" class="calendar" style="display:none;"></div>
   <div class="line-tip" id="lineTip"></div>
 
-  <script src="xian_data.js?v=20261113T1139"></script>
-  <script src="ops_data.js?v=20261113T1139"></script>
-  <script src="ocs_data.js?v=20261113T1139"></script>
-  <script src="exp_data.js?v=20261113T1139"></script>
-  <script src="metric_track.js?v=20261113T1139"></script>
-  <script src="chart.umd.min.js?v=20261113T1139"></script>
+  <script src="xian_data.js?v=20261114T1042"></script>
+  <script src="ops_data.js?v=20261114T1042"></script>
+  <script src="ocs_data.js?v=20261114T1042"></script>
+  <script src="exp_data.js?v=20261114T1042"></script>
+  <script src="metric_track.js?v=20261114T1042"></script>
+  <script src="chart.umd.min.js?v=20261114T1042"></script>
 <script>
 (function(){
   var $ = function(id){ return document.getElementById(id); };
@@ -1002,16 +1002,12 @@
   function odsReportHtml(date){
     var cur=D[date];
     if(!cur || !_hasReal(date)){ return '<div class="card">'+date+' 暂无运营数据（当日数据尚未生成）</div>'; }
-    var day=+date.split('-')[2], month=+date.split('-')[1];
     var now=new Date();
     var genTime=now.getFullYear()+'-'+String(now.getMonth()+1).padStart(2,'0')+'-'+String(now.getDate()).padStart(2,'0')+' '+String(now.getHours()).padStart(2,'0')+':'+String(now.getMinutes()).padStart(2,'0');
     var wo=cur.ops.workOrder;
     return '<div class="single-report">'+
-      '<div class="header"><h1>运营数据汇总日报</h1><div class="sub">统计日期：'+date+' ｜ 数据范围：客服对接 · 内部消息 · 运营处理量(含工单) · 素养检查（当日检出问题） · 预警看板（西安未处理预警）</div></div>'+
       '<div class="section"><div class="section-title">板块一 · 消息对接统计</div>'+genMessageCards(cur)+'</div>'+
-      '<div class="section"><div class="section-title">板块二 · '+month+'月'+day+'日 运营处理量</div><div class="panel"><div class="ops-grid">'+genOpsGrid(cur)+'</div></div>'+
-      '<div class="panel wo-section"><div class="wo-header">工单处理量明细 · 各区域日工单（西安'+wo['西安']+' 太原'+wo['太原']+' 兰州'+wo['兰州']+'） ｜ 当日合计 <strong>'+wo.total+'</strong> 单</div>'+genWorkorderBars(cur)+'</div>'+
-      '<div class="panel chart-section"><div class="chart-title">运营处理量分布 · 各指标对比</div><div class="chart-wrap">'+genBarChart(cur)+'</div></div></div>'+
+      '<div class="section"><div class="panel wo-section" style="margin-top:0;"><div class="wo-header">工单处理量明细 · 各区域日工单（西安'+wo['西安']+' 太原'+wo['太原']+' 兰州'+wo['兰州']+'） ｜ 当日合计 <strong>'+wo.total+'</strong> 单</div>'+genWorkorderBars(cur)+'</div></div>'+
       '<div class="section"><div class="section-title">板块三 · 素养检查（当日检出问题）</div><div class="panel">'+genQualityCheckSection(cur)+'</div></div>'+
       '<div class="section"><div class="section-title">板块四 · 预警看板（西安未处理预警）</div><div class="panel">'+genWarningSection(cur)+'</div></div>'+
       '<div class="footer">报告生成时间：'+genTime+' ｜ 数据来源：飞书群消息 + 飞书表格「抖音交付、稽核汇总」+ 飞书多维表「预警未处理明细 / 素养检查」</div></div>';
@@ -1077,17 +1073,12 @@
   // 区间视图 = 同一张单日卡片样式，但数据换成区间聚合（复用全部单日生成器，样式不变）
   function odsRangeReportHtml(list){
     var agg=odsAggregate(list);
-    var label=list[0]+' ~ '+list[list.length-1];
-    var n=list.length;
     var now=new Date();
     var genTime=now.getFullYear()+'-'+String(now.getMonth()+1).padStart(2,'0')+'-'+String(now.getDate()).padStart(2,'0')+' '+String(now.getHours()).padStart(2,'0')+':'+String(now.getMinutes()).padStart(2,'0');
     var wo=agg.ops.workOrder;
     var html='<div class="single-report">'+
-      '<div class="header"><h1>运营数据汇总日报（区间）</h1><div class="sub">统计区间：'+label+' ｜ 共 '+n+' 天 ｜ 数据范围：客服对接 · 内部消息 · 运营处理量(含工单) · 素养检查（区间检出问题） · 预警看板（西安未处理预警）</div></div>'+
       '<div class="section"><div class="section-title">板块一 · 消息对接统计</div>'+genMessageCards(agg)+'</div>'+
-      '<div class="section"><div class="section-title">板块二 · 区间运营处理量</div><div class="panel"><div class="ops-grid">'+genOpsGrid(agg)+'</div></div>'+
-      '<div class="panel wo-section"><div class="wo-header">工单处理量明细 · 各区域日工单（西安'+wo['西安']+' 太原'+wo['太原']+' 兰州'+wo['兰州']+'） ｜ 区间合计 <strong>'+wo.total+'</strong> 单</div>'+genWorkorderBars(agg)+'</div>'+
-      '<div class="panel chart-section"><div class="chart-title">运营处理量分布 · 各指标对比</div><div class="chart-wrap">'+genBarChart(agg)+'</div></div></div>'+
+      '<div class="section"><div class="panel wo-section" style="margin-top:0;"><div class="wo-header">工单处理量明细 · 各区域日工单（西安'+wo['西安']+' 太原'+wo['太原']+' 兰州'+wo['兰州']+'） ｜ 区间合计 <strong>'+wo.total+'</strong> 单</div>'+genWorkorderBars(agg)+'</div></div>'+
       '<div class="section"><div class="section-title">板块三 · 素养检查（区间检出问题）</div><div class="panel">'+genQualityCheckSection(agg)+'</div></div>'+
       '<div class="section"><div class="section-title">板块四 · 预警看板（西安未处理预警）</div><div class="panel">'+genWarningSection(agg)+'</div></div>'+
       '<div class="footer">报告生成时间：'+genTime+' ｜ 数据来源：飞书群消息 + 飞书表格「抖音交付、稽核汇总」+ 飞书多维表「预警未处理明细 / 素养检查」</div></div>';
