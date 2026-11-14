@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-<meta name="build" content="20261114T1042">
+<meta name="build" content="20261114T1109">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -834,12 +834,12 @@
   <div id="calendar" class="calendar" style="display:none;"></div>
   <div class="line-tip" id="lineTip"></div>
 
-  <script src="xian_data.js?v=20261114T1042"></script>
-  <script src="ops_data.js?v=20261114T1042"></script>
-  <script src="ocs_data.js?v=20261114T1042"></script>
-  <script src="exp_data.js?v=20261114T1042"></script>
-  <script src="metric_track.js?v=20261114T1042"></script>
-  <script src="chart.umd.min.js?v=20261114T1042"></script>
+  <script src="xian_data.js?v=20261114T1109"></script>
+  <script src="ops_data.js?v=20261114T1109"></script>
+  <script src="ocs_data.js?v=20261114T1109"></script>
+  <script src="exp_data.js?v=20261114T1109"></script>
+  <script src="metric_track.js?v=20261114T1109"></script>
+  <script src="chart.umd.min.js?v=20261114T1109"></script>
 <script>
 (function(){
   var $ = function(id){ return document.getElementById(id); };
@@ -1007,7 +1007,7 @@
     var wo=cur.ops.workOrder;
     return '<div class="single-report">'+
       '<div class="section"><div class="section-title">板块一 · 消息对接统计</div>'+genMessageCards(cur)+'</div>'+
-      '<div class="section"><div class="panel wo-section" style="margin-top:0;"><div class="wo-header">工单处理量明细 · 各区域日工单（西安'+wo['西安']+' 太原'+wo['太原']+' 兰州'+wo['兰州']+'） ｜ 当日合计 <strong>'+wo.total+'</strong> 单</div>'+genWorkorderBars(cur)+'</div></div>'+
+      '<div class="section"><div class="section-title">板块二 · 工单处理量</div><div class="panel wo-section" style="margin-top:0;"><div class="wo-header">工单处理量明细 · 各区域日工单（西安'+wo['西安']+' 太原'+wo['太原']+' 兰州'+wo['兰州']+'） ｜ 当日合计 <strong>'+wo.total+'</strong> 单</div>'+genWorkorderBars(cur)+'</div></div>'+
       '<div class="section"><div class="section-title">板块三 · 素养检查（当日检出问题）</div><div class="panel">'+genQualityCheckSection(cur)+'</div></div>'+
       '<div class="section"><div class="section-title">板块四 · 预警看板（西安未处理预警）</div><div class="panel">'+genWarningSection(cur)+'</div></div>'+
       '<div class="footer">报告生成时间：'+genTime+' ｜ 数据来源：飞书群消息 + 飞书表格「抖音交付、稽核汇总」+ 飞书多维表「预警未处理明细 / 素养检查」</div></div>';
@@ -1078,7 +1078,7 @@
     var wo=agg.ops.workOrder;
     var html='<div class="single-report">'+
       '<div class="section"><div class="section-title">板块一 · 消息对接统计</div>'+genMessageCards(agg)+'</div>'+
-      '<div class="section"><div class="panel wo-section" style="margin-top:0;"><div class="wo-header">工单处理量明细 · 各区域日工单（西安'+wo['西安']+' 太原'+wo['太原']+' 兰州'+wo['兰州']+'） ｜ 区间合计 <strong>'+wo.total+'</strong> 单</div>'+genWorkorderBars(agg)+'</div></div>'+
+      '<div class="section"><div class="section-title">板块二 · 工单处理量</div><div class="panel wo-section" style="margin-top:0;"><div class="wo-header">工单处理量明细 · 各区域日工单（西安'+wo['西安']+' 太原'+wo['太原']+' 兰州'+wo['兰州']+'） ｜ 区间合计 <strong>'+wo.total+'</strong> 单</div>'+genWorkorderBars(agg)+'</div></div>'+
       '<div class="section"><div class="section-title">板块三 · 素养检查（区间检出问题）</div><div class="panel">'+genQualityCheckSection(agg)+'</div></div>'+
       '<div class="section"><div class="section-title">板块四 · 预警看板（西安未处理预警）</div><div class="panel">'+genWarningSection(agg)+'</div></div>'+
       '<div class="footer">报告生成时间：'+genTime+' ｜ 数据来源：飞书群消息 + 飞书表格「抖音交付、稽核汇总」+ 飞书多维表「预警未处理明细 / 素养检查」</div></div>';
