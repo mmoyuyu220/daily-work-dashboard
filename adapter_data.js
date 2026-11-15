@@ -1,9 +1,9 @@
 window.ADAPTER_DATA = {
-  "updated": "2026-11-15 09:20",
+  "updated": "2026-11-15 11:37",
   "from": "2026-10-01",
   "to": "2026-11-15",
   "chat": "西安仓储",
-  "totalMsgs": 1591,
+  "totalMsgs": 1595,
   "total": 10,
   "byDate": {
     "2026-10-09": 1,
