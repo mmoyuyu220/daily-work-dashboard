@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-<meta name="build" content="20261114T1144">
+<meta name="build" content="20261115T0922">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -325,6 +325,12 @@
   .single-report .chart-val{ font-size:12px; font-weight:700; color:#0f172a; margin-bottom:5px; }
   .single-report .chart-bar{ width:26px; border-radius:4px 4px 0 0; }
   .single-report .chart-lbl{ font-size:11px; color:#86909c; margin-top:7px; text-align:center; max-width:64px; }
+  .single-report .ad-summary{ font-size:14px; color:#0f172a; margin-bottom:6px; }
+  .single-report .ad-summary strong{ font-size:19px; color:var(--primary); margin:0 3px; }
+  .single-report .ad-note{ font-size:12px; color:#86909c; font-weight:400; margin-left:8px; }
+  .single-report .ad-block-title{ font-size:13px; font-weight:600; color:#475569; margin:18px 0 10px; }
+  .single-report .ad-detail td{ font-size:12px; vertical-align:top; }
+  .single-report .ad-msg{ max-width:520px; word-break:break-word; color:#475569; }
   .single-report .audit-alert{ display:flex; align-items:center; gap:10px; background:var(--amber-bg); color:#d97706; border-radius:var(--r-sm); padding:12px 16px; font-size:13px; margin-bottom:16px; border:1px solid #fde6c8; }
   .single-report .audit-alert[style*="background:#e8ffea"]{ background:var(--green-bg) !important; color:var(--green) !important; border-color:#c4ebcf !important; }
   .single-report .alert-icon{ width:18px; height:18px; border-radius:50%; background:#d97706; color:#fff; display:inline-flex; align-items:center; justify-content:center; font-size:12px; font-weight:700; flex-shrink:0; }
@@ -834,12 +840,13 @@
   <div id="calendar" class="calendar" style="display:none;"></div>
   <div class="line-tip" id="lineTip"></div>
 
-  <script src="xian_data.js?v=20261114T1144"></script>
-  <script src="ops_data.js?v=20261114T1144"></script>
-  <script src="ocs_data.js?v=20261114T1144"></script>
-  <script src="exp_data.js?v=20261114T1144"></script>
-  <script src="metric_track.js?v=20261114T1144"></script>
-  <script src="chart.umd.min.js?v=20261114T1144"></script>
+  <script src="xian_data.js?v=20261115T0922"></script>
+  <script src="ops_data.js?v=20261115T0922"></script>
+  <script src="ocs_data.js?v=20261115T0922"></script>
+  <script src="exp_data.js?v=20261115T0922"></script>
+  <script src="metric_track.js?v=20261115T0922"></script>
+  <script src="chart.umd.min.js?v=20261115T0922"></script>
+  <script src="adapter_data.js?v=20261115T0922"></script>
 <script>
 (function(){
   var $ = function(id){ return document.getElementById(id); };
@@ -999,6 +1006,29 @@
     else { html+='<div class="audit-note">当日西安无未处理预警'+(src?'（'+src+' 亦无）':'')+'。</div>'; }
     return html;
   }
+  function adEsc(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+  // 板块五：西安仓储群「少适配器」报备，跟随日期筛选；只计主动发送（reply_to 已在生成器排除）
+  function genAdapterSection(from,to){
+    var A=window.ADAPTER_DATA||{messages:[],from:'2026-10-01'};
+    var list=(A.messages||[]).filter(function(m){ return m.date>=from && m.date<=to; });
+    var n=list.length, bySender={}, names=[];
+    list.forEach(function(m){ if(!(m.sender in bySender)){ bySender[m.sender]=0; names.push(m.sender); } bySender[m.sender]++; });
+    names.sort(function(a,b){ return bySender[b]-bySender[a]; });
+    var mx=1; names.forEach(function(s){ if(bySender[s]>mx) mx=bySender[s]; });
+    var scope=from+(from===to?'':' ~ '+to);
+    var head='<div class="ad-summary">'+scope+' 少适配器报备 <strong>'+n+'</strong> 条'+
+      '<span class="ad-note">仅计主动发送（引用回复不计）· 来源：'+adEsc(A.chat||'西安仓储')+'群 · 起拉 '+adEsc(A.from||'2026-10-01')+(A.updated?' · 更新 '+adEsc(A.updated):'')+'</span></div>';
+    if(!n) return head+'<div class="audit-note">该日期范围内无少适配器报备消息。</div>';
+    var bars='<div class="ad-block-title">按发送人</div>'+names.map(function(s){
+      var v=bySender[s], w=Math.round(v/mx*100);
+      return '<div class="wo-line"><div class="wo-info"><span class="wo-city">'+adEsc(s)+'</span><span class="wo-pct">'+v+' 条</span></div><div class="wo-track"><div class="wo-fill" style="width:'+w+'%;background:#3370ff;"></div></div></div>';
+    }).join('');
+    var rows=list.map(function(m){
+      return '<tr><td>'+adEsc(m.date)+' '+adEsc(m.time)+'</td><td class="cname">'+adEsc(m.sender)+'</td><td>'+adEsc(m.orderNo||'—')+'</td><td class="ad-msg">'+adEsc(m.content)+'</td></tr>';
+    }).join('');
+    var table='<div class="ad-block-title">报备明细（'+n+' 条）</div><table class="ops-table ad-detail"><thead><tr><th>时间</th><th>发送人</th><th>订单号</th><th>消息内容</th></tr></thead><tbody>'+rows+'</tbody></table>';
+    return head+bars+table;
+  }
   function odsReportHtml(date){
     var cur=D[date];
     if(!cur || !_hasReal(date)){ return '<div class="card">'+date+' 暂无运营数据（当日数据尚未生成）</div>'; }
@@ -1010,6 +1040,7 @@
       '<div class="section"><div class="section-title">板块二 · 工单处理量</div><div class="panel wo-section" style="margin-top:0;"><div class="wo-header">工单处理量明细 · 各区域日工单（西安'+wo['西安']+' 太原'+wo['太原']+' 兰州'+wo['兰州']+'） ｜ 当日合计 <strong>'+wo.total+'</strong> 单</div>'+genWorkorderBars(cur)+'</div></div>'+
       '<div class="section"><div class="section-title">板块三 · 素养检查（当日检出问题）</div><div class="panel">'+genQualityCheckSection(cur)+'</div></div>'+
       '<div class="section"><div class="section-title">板块四 · 预警看板（西安未处理预警）</div><div class="panel">'+genWarningSection(cur)+'</div></div>'+
+      '<div class="section"><div class="section-title">板块五 · 少适配器报备（西安仓储）</div><div class="panel">'+genAdapterSection(date,date)+'</div></div>'+
       '<div class="footer">报告生成时间：'+genTime+' ｜ 数据来源：飞书群消息 + 飞书表格「抖音交付、稽核汇总」+ 飞书多维表「预警未处理明细 / 素养检查」</div></div>';
   }
   function odsRowMetrics(date){
@@ -1081,6 +1112,7 @@
       '<div class="section"><div class="section-title">板块二 · 工单处理量</div><div class="panel wo-section" style="margin-top:0;"><div class="wo-header">工单处理量明细 · 各区域日工单（西安'+wo['西安']+' 太原'+wo['太原']+' 兰州'+wo['兰州']+'） ｜ 区间合计 <strong>'+wo.total+'</strong> 单</div>'+genWorkorderBars(agg)+'</div></div>'+
       '<div class="section"><div class="section-title">板块三 · 素养检查（区间检出问题）</div><div class="panel">'+genQualityCheckSection(agg)+'</div></div>'+
       '<div class="section"><div class="section-title">板块四 · 预警看板（西安未处理预警）</div><div class="panel">'+genWarningSection(agg)+'</div></div>'+
+      '<div class="section"><div class="section-title">板块五 · 少适配器报备（西安仓储）</div><div class="panel">'+genAdapterSection(list[0],list[list.length-1])+'</div></div>'+
       '<div class="footer">报告生成时间：'+genTime+' ｜ 数据来源：飞书群消息 + 飞书表格「抖音交付、稽核汇总」+ 飞书多维表「预警未处理明细 / 素养检查」</div></div>';
     // 区间口径下把"当日"措辞改为"区间"，其余样式完全沿用单日卡片
     html=html.replace(/当日素养检查/g,'区间素养检查').replace(/当日检出问题/g,'区间检出问题').replace(/当日无素养检查/g,'区间无素养检查').replace(/当日西安未处理预警/g,'区间西安未处理预警').replace(/当日西安无未处理预警/g,'区间西安无未处理预警');
