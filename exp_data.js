@@ -3,7 +3,7 @@
 // weeks: 周1..周N（N=至少一张周度表有真实数据的最大周，全空未来周已截断）；比率以数值存储（0.054 = 0.054%，96.19 = 96.19%）；空值=null。
 // 预警标记：metric.warn{dir:'gt'|'lt',thr,label} 或 metric.flagNonZero。
 window.EXP_DATA = {
- "updated": "2026-11-11",
+ "updated": "2026-11-18",
  "weeks": [
   1,
   2,
@@ -48,7 +48,8 @@ window.EXP_DATA = {
   41,
   42,
   43,
-  44
+  44,
+  45
  ],
  "groups": {
   "baoSun": {
@@ -106,7 +107,7 @@ window.EXP_DATA = {
       14080.0,
       13137.0,
       12986.0,
-      null,
+      13180.0,
       null,
       null,
       null,
@@ -169,7 +170,7 @@ window.EXP_DATA = {
       5,
       15,
       14,
-      null,
+      11,
       null,
       null,
       null,
@@ -232,7 +233,7 @@ window.EXP_DATA = {
       0.036,
       0.114,
       0.108,
-      null,
+      0.083,
       null,
       null,
       null,
@@ -358,7 +359,7 @@ window.EXP_DATA = {
       0.0,
       3.0,
       2.0,
-      null,
+      0.0,
       null,
       null,
       null,
@@ -421,7 +422,7 @@ window.EXP_DATA = {
       0.0,
       0.023,
       0.015,
-      null,
+      0.0,
       null,
       null,
       null,
@@ -495,7 +496,7 @@ window.EXP_DATA = {
       12185.0,
       11531.0,
       11232.0,
-      null,
+      11334.0,
       null,
       null,
       null,
@@ -558,7 +559,7 @@ window.EXP_DATA = {
       0.0,
       0.0,
       1.0,
-      null,
+      0.0,
       null,
       null,
       null,
@@ -684,7 +685,7 @@ window.EXP_DATA = {
       5319.0,
       5583.0,
       6158.0,
-      null,
+      5749.0,
       null,
       null,
       null,
@@ -747,7 +748,7 @@ window.EXP_DATA = {
       0.0,
       1.0,
       1.0,
-      null,
+      0.0,
       null,
       null,
       null,
@@ -990,7 +991,7 @@ window.EXP_DATA = {
       0.52,
       1.03,
       0.95,
-      null,
+      0.76,
       null,
       null,
       null,
@@ -1057,7 +1058,7 @@ window.EXP_DATA = {
       0.54,
       1.31,
       null,
-      null,
+      1.12,
       null,
       null,
       null,
@@ -1124,7 +1125,7 @@ window.EXP_DATA = {
       0.7,
       1.18,
       1.34,
-      null,
+      0.63,
       null,
       null,
       null,
@@ -1354,7 +1355,7 @@ window.EXP_DATA = {
   "chaiCu": {
    "name": "执行&挂载视频抽查（西安）",
    "src": "wiki 执行&挂载视频抽查 · 西安·月度",
-   "note": "仓=西安、是否合规=否 的月度聚合（共 25 条 / 1月–11月）；不合规次数≠0 月标红。",
+   "note": "仓=西安、是否合规=否 的月度聚合（共 26 条 / 1月–11月）；不合规次数≠0 月标红。",
    "axis": "months",
    "cols": [
     "1月",
@@ -1386,7 +1387,7 @@ window.EXP_DATA = {
       268,
       254,
       234,
-      105
+      210
      ],
      "warn": null,
      "flagNonZero": false,
@@ -1408,7 +1409,7 @@ window.EXP_DATA = {
       1,
       0,
       1,
-      0
+      1
      ],
      "warn": null,
      "flagNonZero": true,
@@ -1430,7 +1431,7 @@ window.EXP_DATA = {
       0.37,
       0.0,
       0.43,
-      0.0
+      0.48
      ],
      "warn": null,
      "flagNonZero": false,
@@ -1662,6 +1663,15 @@ window.EXP_DATA = {
      "问题类型": "机器保护",
      "问题说明": "抽拉保护膜，导致机器碰撞",
      "改善方案": ""
+    },
+    {
+     "月": "11月",
+     "周": "W45",
+     "物品编码": "20261014172407101634",
+     "挂载属性值": "",
+     "问题类型": "打包问题",
+     "问题说明": "打包填充物不足",
+     "改善方案": "填充物不足，现场已已识别，人员以重新宣导，后续加强手法改善，增加抽检"
     }
    ]
   }
