@@ -36015,5 +36015,245 @@ window.DASHBOARD_DATA = {
         "质量素养：拆修/质检/发货环节自检互检，问题不过夜，当班次闭环并复检留痕。"
       ]
     }
+  },
+  "2026-11-19": {
+    "date": "2026-11-19",
+    "messages": {
+      "external": {
+        "atCount": 4,
+        "replyRate": 75,
+        "replied": 3,
+        "unreplied": 1,
+        "groupCount": 13,
+        "colleagueCount": 7,
+        "perColleague": [
+          {
+            "name": "刘思凡",
+            "atCount": 0,
+            "repliedCount": 0,
+            "repliedByOthers": 0,
+            "unfollowed": 0,
+            "avgReplyTime": null,
+            "maxReplyTime": null,
+            "groups": []
+          },
+          {
+            "name": "王妙星",
+            "atCount": 0,
+            "repliedCount": 0,
+            "repliedByOthers": 0,
+            "unfollowed": 0,
+            "avgReplyTime": null,
+            "maxReplyTime": null,
+            "groups": []
+          },
+          {
+            "name": "杨凡凡",
+            "atCount": 4,
+            "repliedCount": 3,
+            "repliedByOthers": 0,
+            "unfollowed": 1,
+            "avgReplyTime": 1.0,
+            "maxReplyTime": 1.0,
+            "groups": [
+              "西安门店运营中心对接群"
+            ]
+          },
+          {
+            "name": "马红霞",
+            "atCount": 0,
+            "repliedCount": 0,
+            "repliedByOthers": 0,
+            "unfollowed": 0,
+            "avgReplyTime": null,
+            "maxReplyTime": null,
+            "groups": []
+          },
+          {
+            "name": "赵豫思",
+            "atCount": 0,
+            "repliedCount": 0,
+            "repliedByOthers": 0,
+            "unfollowed": 0,
+            "avgReplyTime": null,
+            "maxReplyTime": null,
+            "groups": []
+          },
+          {
+            "name": "洪朵",
+            "atCount": 0,
+            "repliedCount": 0,
+            "repliedByOthers": 0,
+            "unfollowed": 0,
+            "avgReplyTime": null,
+            "maxReplyTime": null,
+            "groups": []
+          },
+          {
+            "name": "张霞霞",
+            "atCount": 0,
+            "repliedCount": 0,
+            "repliedByOthers": 0,
+            "unfollowed": 0,
+            "avgReplyTime": null,
+            "maxReplyTime": null,
+            "groups": []
+          }
+        ],
+        "replyDetails": [
+          {
+            "group": "西安门店运营中心对接群",
+            "atPerson": "杨凡凡",
+            "atTime": "2026-11-19 09:46",
+            "actualReplier": "",
+            "responseMin": 0,
+            "status": "未跟进"
+          },
+          {
+            "group": "西安门店运营中心对接群",
+            "atPerson": "杨凡凡",
+            "atTime": "2026-11-19 10:11",
+            "actualReplier": "杨凡凡",
+            "responseMin": 1.0,
+            "status": "已回复"
+          },
+          {
+            "group": "西安门店运营中心对接群",
+            "atPerson": "杨凡凡",
+            "atTime": "2026-11-19 10:22",
+            "actualReplier": "杨凡凡",
+            "responseMin": 1.0,
+            "status": "已回复"
+          },
+          {
+            "group": "西安门店运营中心对接群",
+            "atPerson": "杨凡凡",
+            "atTime": "2026-11-19 10:30",
+            "actualReplier": "杨凡凡",
+            "responseMin": 1.0,
+            "status": "已回复"
+          }
+        ]
+      },
+      "internal": {
+        "sevenSent": 13,
+        "groupCount": 11,
+        "sevenShare": 13,
+        "topSender": {
+          "name": "张霞霞",
+          "count": 7
+        },
+        "per_user": {
+          "杨凡凡": 5,
+          "张霞霞": 7,
+          "王妙星": 1
+        },
+        "perColleague": [
+          {
+            "name": "刘思凡",
+            "sent": 0,
+            "groups": []
+          },
+          {
+            "name": "王妙星",
+            "sent": 1,
+            "groups": [
+              "抖音业务"
+            ]
+          },
+          {
+            "name": "杨凡凡",
+            "sent": 5,
+            "groups": [
+              "西太兰体验运营沟通交流群",
+              "异常处理自己人",
+              "西安sup主力部队"
+            ]
+          },
+          {
+            "name": "马红霞",
+            "sent": 0,
+            "groups": []
+          },
+          {
+            "name": "赵豫思",
+            "sent": 0,
+            "groups": []
+          },
+          {
+            "name": "洪朵",
+            "sent": 0,
+            "groups": []
+          },
+          {
+            "name": "张霞霞",
+            "sent": 7,
+            "groups": [
+              "西太兰体验运营沟通交流群",
+              "异常处理自己人",
+              "美美桑内",
+              "西安sup主力部队",
+              "西安异常"
+            ]
+          }
+        ]
+      }
+    },
+    "ops": {
+      "processing": {
+        "异常上下架量": 36,
+        "对外对接(电话)": 3,
+        "对外对接(微信/企微)": 5,
+        "异常处理量": 41,
+        "外呼量": 2,
+        "视频调取量": 31
+      },
+      "workOrder": {
+        "total": 7,
+        "西安": 7,
+        "太原": 0,
+        "兰州": 0
+      },
+      "douyinAudit": 0,
+      "pickupReturn": 43
+    },
+    "warning": {
+      "date": "2026-11-22",
+      "total": 0,
+      "byType": {},
+      "records": [],
+      "source": "历史预警未处理反馈记录"
+    },
+    "qualityCheck": {
+      "newCount": 1,
+      "totalChecks": 18,
+      "improvement": "当日检出素养问题 1 条（含问题描述），须当班次整改闭环。",
+      "records": [
+        {
+          "date": "2026-11-19",
+          "team": "前辅助",
+          "point": "5S",
+          "owner": "雅杰",
+          "issue": "1：下班酒精未未归。2：物料及周转盒下班未放置到指定位置。",
+          "issueField": "问题描述",
+          "hasImage": true
+        }
+      ],
+      "lastRecord": {
+        "date": "2026-11-19",
+        "team": "前辅助",
+        "point": "5S",
+        "owner": "雅杰",
+        "issue": "1：下班酒精未未归。2：物料及周转盒下班未放置到指定位置。",
+        "issueField": "问题描述",
+        "hasImage": true
+      },
+      "improvementPlan": [
+        "5S 现场：物料/工具/机器定置定位，通道无杂物，工位每日班前班后整理，问题图片即整改证据。",
+        "基本素养：按规定着装挂牌、按标准作业流程操作，不简化、不跳步，关键动作有自检确认。",
+        "安全素养：用电/设备/搬运安全合规，发现隐患立即上报并隔离，杜绝带病作业。",
+        "质量素养：拆修/质检/发货环节自检互检，问题不过夜，当班次闭环并复检留痕。"
+      ]
+    }
   }
 };
