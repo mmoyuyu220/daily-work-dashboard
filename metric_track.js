@@ -1,5 +1,5 @@
 window.METRIC_TRACK = {
-  "updated": "2026-11-18",
+  "updated": "2026-11-25",
   "week": {
     "cols": [
       "W1",
@@ -1110,8 +1110,8 @@ window.METRIC_TRACK = {
             "s": "blank"
           },
           {
-            "v": "83.29%",
-            "s": "bad"
+            "v": "",
+            "s": "blank"
           },
           {
             "v": "86.45%",
@@ -1246,13 +1246,13 @@ window.METRIC_TRACK = {
             "s": "ok"
           }
         ],
-        "bad": 20,
+        "bad": 19,
         "src": "EnRQs4LwPh7tU0tzrhecKwzznEf·3aead1",
         "base": [
           null,
           null,
           null,
-          86.56,
+          null,
           89.9,
           87.18,
           86.81,
@@ -2361,8 +2361,8 @@ window.METRIC_TRACK = {
             "s": "blank"
           },
           {
-            "v": "0.72%",
-            "s": "ok"
+            "v": "",
+            "s": "blank"
           },
           {
             "v": "0.60%",
@@ -2677,8 +2677,8 @@ window.METRIC_TRACK = {
             "s": "blank"
           },
           {
-            "v": "89.45%",
-            "s": "bad"
+            "v": "",
+            "s": "blank"
           },
           {
             "v": "92.47%",
@@ -2821,7 +2821,7 @@ window.METRIC_TRACK = {
             "s": "ok"
           }
         ],
-        "bad": 19
+        "bad": 18
       },
       {
         "seq": "19",
@@ -2835,8 +2835,8 @@ window.METRIC_TRACK = {
             "s": "blank"
           },
           {
-            "v": "94.84%",
-            "s": "bad"
+            "v": "",
+            "s": "blank"
           },
           {
             "v": "95.20%",
@@ -2979,7 +2979,7 @@ window.METRIC_TRACK = {
             "s": "bad"
           }
         ],
-        "bad": 36
+        "bad": 35
       },
       {
         "seq": "20",
@@ -2993,8 +2993,8 @@ window.METRIC_TRACK = {
             "s": "blank"
           },
           {
-            "v": "96.88%",
-            "s": "bad"
+            "v": "",
+            "s": "blank"
           },
           {
             "v": "90.74%",
@@ -3137,7 +3137,7 @@ window.METRIC_TRACK = {
             "s": "ok"
           }
         ],
-        "bad": 9
+        "bad": 8
       },
       {
         "seq": "21",
@@ -3151,8 +3151,8 @@ window.METRIC_TRACK = {
             "s": "blank"
           },
           {
-            "v": "99.82%",
-            "s": "ok"
+            "v": "",
+            "s": "blank"
           },
           {
             "v": "100.00%",
@@ -3309,8 +3309,8 @@ window.METRIC_TRACK = {
             "s": "blank"
           },
           {
-            "v": "0.20%",
-            "s": "ok"
+            "v": "",
+            "s": "blank"
           },
           {
             "v": "0.13%",
@@ -5385,7 +5385,7 @@ window.METRIC_TRACK = {
     "cols": [
       "10月",
       "9月",
-      "9月"
+      "8月"
     ],
     "latest": "10月",
     "rows": [
@@ -5559,7 +5559,7 @@ window.METRIC_TRACK = {
             "s": "ok"
           },
           {
-            "v": "86.65%",
+            "v": "85.25%",
             "s": "ok"
           }
         ],
@@ -5728,16 +5728,16 @@ window.METRIC_TRACK = {
         "owner": "王毅飞",
         "vals": [
           {
-            "v": "",
-            "s": "blank"
+            "v": "0.30%",
+            "s": "ok"
           },
           {
-            "v": "",
-            "s": "blank"
+            "v": "0.28%",
+            "s": "ok"
           },
           {
-            "v": "",
-            "s": "blank"
+            "v": "0.36%",
+            "s": "ok"
           }
         ],
         "bad": 0
@@ -5754,12 +5754,12 @@ window.METRIC_TRACK = {
             "s": "blank"
           },
           {
-            "v": "",
-            "s": "blank"
+            "v": "4.81%",
+            "s": "ok"
           },
           {
-            "v": "",
-            "s": "blank"
+            "v": "5.06%",
+            "s": "ok"
           }
         ],
         "bad": 0
@@ -5935,7 +5935,7 @@ window.METRIC_TRACK = {
             "s": "ok"
           },
           {
-            "v": "0.004%",
+            "v": "0.010%",
             "s": "ok"
           }
         ],
